@@ -134,7 +134,7 @@ function crearContrato() {
     sendEmail(cot,form,contractFolderUrl)
   
   }
-}
+
 function createContractFolder() {
   var folderId = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","clientFolderId");
   var folderName = "CONTRATOS";
