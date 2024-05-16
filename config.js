@@ -22,8 +22,8 @@ var personycaEmail2 = "bitsaga2804@gmail.com"
 //Prefilled forms
 
 var approveCotForm = "1FAIpQLSf_ZTWb79JDUbWMtXng8Lnog0Jwod7oxAP2U4nNSIfEQwSs6g";
-var clientAcceptForm = "";
-var approveContractForm = "";
+var clientAcceptForm = "1FAIpQLSebS5fS5oB9tXnns6OdM6r8RnkC9PzYiU-CoptypDl-mhldPg";
+var approveContractForm = "1FAIpQLScnKWRXGB7XND1zK7msYKoLYEqP1eL-LK7zKEjjW9IFnbMw7A";
 
 /*
 //Prod
@@ -47,6 +47,6 @@ var personycaEmail2 = "autopersonyca@gmail.com"
 //Prefilled forms
 
 var approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w";
-var clientAcceptForm = "";
+var clientAcceptForm = "1FAIpQLSfj5LY8b1dnCRnGjrz4lQQ0eu_FUk5RPB5lL6XzO6wJ0O7k2w";
 var approveContractForm = "";
 */

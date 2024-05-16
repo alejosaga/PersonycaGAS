@@ -74,7 +74,7 @@ function traerDatos() {
 
  
 
-  var prefilledForm = "https://docs.google.com/forms/d/e/1FAIpQLSebS5fS5oB9tXnns6OdM6r8RnkC9PzYiU-CoptypDl-mhldPg/viewform?usp=pp_url&entry.1204079246="+nit+"&entry.219423794="+cot+"&entry.1368409936="+companyName+"&entry.1361289729="+valor+"&entry.237567784=Si&entry.483030226="+fechaFormateada;
+  var prefilledForm = "https://docs.google.com/forms/d/e/"+clientAcceptForm+"/viewform?usp=pp_url&entry.1204079246="+nit+"&entry.219423794="+cot+"&entry.1368409936="+companyName+"&entry.1361289729="+valor+"&entry.237567784=Si&entry.483030226="+fechaFormateada;
 
  
 

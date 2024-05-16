@@ -212,7 +212,7 @@ function preFilledForm(id,nombre,contrato,valor){
     
     
     
-    var prefilledForm= "https://docs.google.com/forms/d/e/1FAIpQLScnKWRXGB7XND1zK7msYKoLYEqP1eL-LK7zKEjjW9IFnbMw7A/viewform?usp=pp_url&entry.2087970223="+id+"&entry.653991903="+companyName+"&entry.1862569191="+contratoName+"&entry.120278530="+valor;
+    var prefilledForm= "https://docs.google.com/forms/d/e/"+approveContractForm+"/viewform?usp=pp_url&entry.2087970223="+id+"&entry.653991903="+companyName+"&entry.1862569191="+contratoName+"&entry.120278530="+valor;
   
     return prefilledForm;
   }
