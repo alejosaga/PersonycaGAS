@@ -1,10 +1,23 @@
-function createSpace() {
+async function createSpace(spaceName) {
+  try {
+    // Obtener los espacios
+    var data = await getSpaces();
+
+    // Verificar si el espacio ya existe
+    var exists = findSpaceByName(data, spaceName);
+    if (exists) {
+      console.log(`El espacio "${spaceName}" ya existe.`);
+      return null; // Retorna nulo si el espacio ya existe
+    }
+
+    // Si no existe, proceder con la creación
+
     const teamId = '9013247276';
     const url = `https://api.clickup.com/api/v2/team/${teamId}/space`;
     const apiKey = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z';
     
     const payload = {
-      name: razonSocial,
+      name: spaceName,
       multiple_assignees: true,
       features: {
         due_dates: {
@@ -40,6 +53,10 @@ function createSpace() {
     Logger.log(spaceId);
   
     return spaceId
+  } catch (error) {
+    console.error('Error creating space:', error);
+    throw error; // Propaga el error hacia arriba
+  }
   }
   ;
   

@@ -1,10 +1,11 @@
-function activarCliente() {
+async function activarCliente() {
   
     let ssmasterContractApprove = SpreadsheetApp.openById(contractApproveId)
     let sheetAprContr = ssmasterContractApprove.getSheetByName("Datos");
     let lastRowContApr = sheetAprContr.getLastRow();
     let contrato = sheetAprContr.getRange(lastRowContApr,3).getValue();
-         
+    let nombreRazonSocial = sheetAprContr.getRange(lastRowContApr,6).getValue();
+    /*
     var parts = contrato.split("-");
     
     if(parts[3]== "7"){
@@ -59,12 +60,25 @@ function activarCliente() {
           htmlBody: body,
           attachments: [archivoAdjunto.getAs(MimeType.PDF)]
         }); 
-
+*/
     //1.Crear plan de Trabajo (Validar la mejor opcion entre crearlo desde una plantilla de Sheets o crearlo directamente en Click Up mediante la API).
+    
+        try {
+            // Verificar si el espacio ya existe
+            var result = await createSpace(nombreRazonSocial);
+            if (result) {
+              // Si se creó el espacio correctamente, manejar la respuesta aquí
+              console.log(`Espacio creado con éxito: ${result}`);
+            } else {
+              console.log(`El espacio "${nombreRazonSocial}" ya existe o no se pudo crear.`);
+            }
+    
+   
+    
+
       
-      var spaceId = createSpace();
       sheetAprContr.getRange(lastRowContApr,9).setValue(spaceId);
-      var clickupfolder = createFolder(spaceId,contrato)
+      var spaceId = sheetAprContr.getRange(lastRowContApr,9).getValue();
       console.log(clickupfolder)
     
   

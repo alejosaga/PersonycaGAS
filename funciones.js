@@ -471,3 +471,17 @@ function firstWordToTitleCase(str) {
     }
     return id;
   }
+
+  function findSpaceByName(data, spaceName) {
+    try {
+      if (!data || !data.spaces || !Array.isArray(data.spaces)) {
+        throw new Error('Invalid data format');
+      }
+  
+      var found = data.spaces.some(space => space.name === spaceName);
+      return found;
+    } catch (error) {
+      //console.error('Error finding space by name:', error);
+      return false;
+    }
+  }
