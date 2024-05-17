@@ -132,8 +132,6 @@ function crearContrato() {
   
   
     // envio de mail para aprobacion
-    var email = "alejandrosaga61@gmail.com"
-    var email2 = "bitsaga2804@gmail.com"
     var firstName = "Nancy";
     var subject = "Revisar contrato: " + numCot+2;
     var body = '<p>Hola <strong>'+ firstName +'</strong>, Tenemos un nuevo cliente!! La empresa <strong>'+razonSocial+'</strong> ha decidido aceptar la cotizacion '+numCot+'.</p> <p>A el borrador de contrato y la documentacion adjunta por el cliente para revision se encuentra en la siguiente carpeta'+contractFolderUrl+' y el link correspondiente al formulario de aprobacion.'+form+'<p>Una vez envies el formulario aceptando el contrato, este será enviado al cliente en PDF 2. </p>'
