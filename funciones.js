@@ -417,3 +417,13 @@ function firstWordToTitleCase(str) {
     return firstWord.charAt(0).toUpperCase() + firstWord.substring(1).toLowerCase();
     
   }
+  function convertirFecha(fecha) {
+    var fechaOriginal = fecha;
+    var fecha = new Date(fechaOriginal);
+    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+    var fechaConvertida = fecha.toLocaleDateString('es-ES', options);
+    fechaConvertida = fechaConvertida.charAt(0).toUpperCase() + fechaConvertida.slice(1);
+    fechaConvertida = fechaConvertida.replace('De', 'de');
+    return fechaConvertida;
+    
+  }

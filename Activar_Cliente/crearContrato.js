@@ -126,12 +126,12 @@ function crearContrato() {
     trasladarArchivo(contractFolderID, cedula,"Cedula Rep. Legal " + razonSocial)
     // formulario de aprobacion
   
-    var form =preFilledForm(nit,razonSocial,cot,valor);
+    var form =preFilledFormContract(nit,razonSocial,cot,valor);
   
     // envio de mail para aprobacion
   
     
-    sendEmail(cot,form,contractFolderUrl)
+    sendEmailContract1(cot,form,contractFolderUrl)
   
   }
 
@@ -161,7 +161,7 @@ function createContractFolder() {
 
 }
 
-function sendEmail(numCot,link,carpeta) {
+function sendEmailContract1(numCot,link,carpeta) {
   var email = "alejandrosaga61@gmail.com"
   var email2 = "bitsaga2804@gmail.com"
   var firstName = "Nancy";
@@ -199,7 +199,7 @@ function getIdFromUrl(url) {
   }
   return id;
 }
-function preFilledForm(id,nombre,contrato,valor){
+function preFilledFormContract(id,nombre,contrato,valor){
 
  
   

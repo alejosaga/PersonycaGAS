@@ -1,7 +1,7 @@
 
 var cachedData = {}; // Definir un objeto para almacenar los datos en memoria temporalmente
 // Abrir hojas de calculo
-c
+
 const SSmaestroCot = SpreadsheetApp.openById(maestroCotId);
 const sheetDatos = SSmaestroCot.getSheetByName('Datos');
 const lastRowDat = sheetDatos.getLastRow();
