@@ -126,13 +126,25 @@ function crearContrato() {
     trasladarArchivo(contractFolderID, cedula,"Cedula Rep. Legal " + razonSocial)
     // formulario de aprobacion
   
-    var form =preFilledFormContract(nit,razonSocial,cot,valor);
+    var contratoName = contrato.replace(/ /g, '+');
+    var companyName = nombre.replace(/ /g, '+');  
+    var form= "https://docs.google.com/forms/d/e/"+approveContractForm+"/viewform?usp=pp_url&entry.2087970223="+id+"&entry.653991903="+companyName+"&entry.1862569191="+contratoName+"&entry.120278530="+valor;
+  
   
     // envio de mail para aprobacion
-  
-    
-    sendEmailContract1(cot,form,contractFolderUrl)
-  
+    var email = "alejandrosaga61@gmail.com"
+    var email2 = "bitsaga2804@gmail.com"
+    var firstName = "Nancy";
+    var subject = "Revisar contrato: " + numCot+2;
+    var body = '<p>Hola <strong>'+ firstName +'</strong>, Tenemos un nuevo cliente!! La empresa <strong>'+razonSocial+'</strong> ha decidido aceptar la cotizacion '+numCot+'.</p> <p>A el borrador de contrato y la documentacion adjunta por el cliente para revision se encuentra en la siguiente carpeta'+contractFolderUrl+' y el link correspondiente al formulario de aprobacion.'+form+'<p>Una vez envies el formulario aceptando el contrato, este será enviado al cliente en PDF 2. </p>'
+    MailApp.sendEmail({
+        to: email,
+        cc: email2,
+        subject: subject,
+        htmlBody: body
+        
+        }); 
+       
   }
 
 function createContractFolder() {
@@ -161,21 +173,6 @@ function createContractFolder() {
 
 }
 
-function sendEmailContract1(numCot,link,carpeta) {
-  var email = "alejandrosaga61@gmail.com"
-  var email2 = "bitsaga2804@gmail.com"
-  var firstName = "Nancy";
-  var subject = "Revisar contrato: " + numCot+2;
-  var body = '<p>Hola <strong>'+ firstName +'</strong>, Tenemos un nuevo cliente!! La empresa <strong>'+razonSocial+'</strong> ha decidido aceptar la cotizacion '+numCot+'.</p> <p>A el borrador de contrato y la documentacion adjunta por el cliente para revision se encuentra en la siguiente carpeta'+carpeta+' y el link correspondiente al formulario de aprobacion.'+link+'<p>Una vez envies el formulario aceptando el contrato, este será enviado al cliente en PDF 2. </p>'
-  MailApp.sendEmail({
-      to: email,
-      cc: email2,
-      subject: subject,
-      htmlBody: body
-      
-    }); 
-}
-
 function trasladarArchivo(idCarpetaDestino, urlArchivo, nuevoNombre) {
   var carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
   var archivo = DriveApp.getFileById(getIdFromUrl(urlArchivo));
@@ -199,24 +196,7 @@ function getIdFromUrl(url) {
   }
   return id;
 }
-function preFilledFormContract(id,nombre,contrato,valor){
 
- 
-  
-    //Form aprobacion pre-llenado
-    
-    //var idEmpresa = id.replace(/ /g, '+');
-    var contratoName = contrato.replace(/ /g, '+');
-    var companyName = nombre.replace(/ /g, '+');
-  
-    
-    
-    
-    var prefilledForm= "https://docs.google.com/forms/d/e/"+approveContractForm+"/viewform?usp=pp_url&entry.2087970223="+id+"&entry.653991903="+companyName+"&entry.1862569191="+contratoName+"&entry.120278530="+valor;
-  
-    return prefilledForm;
-  }
-  
   
   
   
