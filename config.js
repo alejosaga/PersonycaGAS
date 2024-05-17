@@ -13,7 +13,8 @@ var contractApproveId = '1PtEMS56XEFPGTiFHlh7xgJq_K1L8I4Rsgtax9G6rwwU'
 
 
 //folders
-carpetaRaizId = "1eIfr2gmnZKvqHFdm2QJMWL--mYbZlUs0"
+var carpetaRaizId = "1eIfr2gmnZKvqHFdm2QJMWL--mYbZlUs0"
+var folderClienteActivoId = "1qnnpJItHT5q4W2XcM2aPEHtIgfD64CeR"
 
 //email's
 var personycaEmail = "autopersonyca@gmail.com"
@@ -39,6 +40,7 @@ var contractApproveId = ''
 
 //folders
 var carpetaRaizId = "19N9AckZiLRZBdDtN1PWT7ZlgpRVENNuv"
+var folderClienteActivoId = ""
 
 //email's
 var personycaEmail = "autopersonyca@gmail.com"

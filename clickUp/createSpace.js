@@ -43,8 +43,8 @@ function createSpace() {
   }
   ;
   
-  async function createFolder(){
-  const spaceId = 90131036679  
+  async function createFolder(id,contrato){
+  const spaceId = id  
   const resp = await fetch(
     `https://api.clickup.com/api/v2/space/${spaceId}/folder`,
     {
@@ -53,11 +53,12 @@ function createSpace() {
         'Content-Type': 'application/json',
         Authorization: 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'
       },
-      body: JSON.stringify({name: servicio})
+      body: JSON.stringify({name: contrato})
     }
   );
   
   const data = await resp.json();
   console.log(data);
+  return data
   }
   

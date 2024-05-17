@@ -427,3 +427,47 @@ function firstWordToTitleCase(str) {
     return fechaConvertida;
     
   }
+  function trasladarCarpeta(idCarpetaTrasladar, idCarpetaDestino) {
+    var carpetaTrasladar = DriveApp.getFolderById(idCarpetaTrasladar);
+    var carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
+  
+    var nuevaCarpeta = carpetaDestino.createFolder(carpetaTrasladar.getName());
+    copiarContenido(carpetaTrasladar, nuevaCarpeta);
+  
+    //carpetaTrasladar.setTrashed(true);
+    var newFolderId = nuevaCarpeta.getId();
+    return newFolderId
+  }
+  
+  function copiarContenido(carpetaOrigen, carpetaDestino) {
+    var archivos = carpetaOrigen.getFiles();
+    while (archivos.hasNext()) {
+      var archivo = archivos.next();
+      archivo.makeCopy(archivo.getName(), carpetaDestino);
+    }
+    
+    var subCarpetas = carpetaOrigen.getFolders();
+    while (subCarpetas.hasNext()) {
+      var subCarpetaOrigen = subCarpetas.next();
+      var nuevaSubCarpetaDestino = carpetaDestino.createFolder(subCarpetaOrigen.getName());
+      copiarContenido(subCarpetaOrigen, nuevaSubCarpetaDestino);
+    }
+  }
+  function convertirDocAPDF(idArchivo, idCarpetaDestino) {
+    var archivo = DriveApp.getFileById(idArchivo);
+    var carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
+  
+    var blobPDF = archivo.getAs('application/pdf');
+    var nombrePDF = archivo.getName() + ".pdf";
+    var archivoPDF = carpetaDestino.createFile(blobPDF).setName(nombrePDF);
+  
+    return archivoPDF.getId();
+  }
+  function getIdFromUrl(url) {
+    var id = "";
+    var match = url.match(/[-\w]{25,}/);
+    if (match) {
+      id = match[0];
+    }
+    return id;
+  }
