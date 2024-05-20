@@ -65,21 +65,11 @@ async function activarCliente() {
     
         
     // Obtener el ID del espacio, ya sea existente o creado
-        var spaceId = await createSpaceAndGetId(nombreRazonSocial);
+    nombreLista = "Cronograma"
+    main(nombreRazonSocial,contrato,nombreLista)
 
     // Manejar el resultado
-    if (spaceId) {
-        console.log(`El espacio "${nombreRazonSocial}" tiene el ID: ${spaceId}`)};
-
-            
-    
    
-    
-
-      
-    sheetAprContr.getRange(lastRowContApr,9).setValue(result);
-    var spaceId = sheetAprContr.getRange(lastRowContApr,9).getValue();
-    console.log(clickupfolder)
     
   
       
