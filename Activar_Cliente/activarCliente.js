@@ -63,23 +63,23 @@ async function activarCliente() {
 */
     //1.Crear plan de Trabajo (Validar la mejor opcion entre crearlo desde una plantilla de Sheets o crearlo directamente en Click Up mediante la API).
     
-        try {
-            // Verificar si el espacio ya existe
-            var result = await createSpace(nombreRazonSocial);
-            if (result) {
-              // Si se creó el espacio correctamente, manejar la respuesta aquí
-              console.log(`Espacio creado con éxito: ${result}`);
-            } else {
-              console.log(`El espacio "${nombreRazonSocial}" ya existe o no se pudo crear.`);
-            }
+        
+    // Obtener el ID del espacio, ya sea existente o creado
+        var spaceId = await createSpaceAndGetId(nombreRazonSocial);
+
+    // Manejar el resultado
+    if (spaceId) {
+        console.log(`El espacio "${nombreRazonSocial}" tiene el ID: ${spaceId}`)};
+
+            
     
    
     
 
       
-      sheetAprContr.getRange(lastRowContApr,9).setValue(spaceId);
-      var spaceId = sheetAprContr.getRange(lastRowContApr,9).getValue();
-      console.log(clickupfolder)
+    sheetAprContr.getRange(lastRowContApr,9).setValue(result);
+    var spaceId = sheetAprContr.getRange(lastRowContApr,9).getValue();
+    console.log(clickupfolder)
     
   
       
@@ -89,5 +89,5 @@ async function activarCliente() {
     //9.Enviar Email a Contabilidad informando sobre la activacion del nuevo cliente, la documentacion legal correspondiente y la informacion sobre facturacion.
     
     
-  }
+    }
   

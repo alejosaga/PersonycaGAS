@@ -1,21 +1,20 @@
 async function createSpace(spaceName) {
   try {
-    // Obtener los espacios
-    var data = await getSpaces();
+    // Get spaces
+    const data = await getSpaces();
 
-    // Verificar si el espacio ya existe
-    var exists = findSpaceByName(data, spaceName);
-    if (exists) {
+    // Check if space exists
+    var spaceId = findSpaceByName(data, spaceName);
+    if (spaceId) {
       console.log(`El espacio "${spaceName}" ya existe.`);
-      return null; // Retorna nulo si el espacio ya existe
+      return spaceId;
     }
 
-    // Si no existe, proceder con la creación
-
+    // Create space if not found
     const teamId = '9013247276';
     const url = `https://api.clickup.com/api/v2/team/${teamId}/space`;
     const apiKey = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z';
-    
+
     const payload = {
       name: spaceName,
       multiple_assignees: true,
@@ -36,7 +35,7 @@ async function createSpace(spaceName) {
         portfolios: {enabled: true}
       }
     };
-    
+
     const options = {
       method: 'post',
       contentType: 'application/json',
@@ -45,24 +44,24 @@ async function createSpace(spaceName) {
       },
       payload: JSON.stringify(payload)
     };
-    
+
     const resp = UrlFetchApp.fetch(url, options);
     const responseData = JSON.parse(resp.getContentText());
     const spaceId = responseData.id;
-    
-    Logger.log(spaceId);
-  
-    return spaceId
+
+    Logger.log(`Space created successfully. ID: ${spaceId}`); // More specific logging
+
+    return spaceId;
   } catch (error) {
     console.error('Error creating space:', error);
-    throw error; // Propaga el error hacia arriba
+    console.error('Error details:', error.message || error); // Log more details
+    throw error;
   }
-  }
-  ;
-  
-  async function createFolder(id,contrato){
-  const spaceId = id  
-  const resp = await fetch(
+}
+
+async function createFolder(id, contrato) {
+  const spaceId = id;
+  const resp = await UrlFetchApp.fetch(
     `https://api.clickup.com/api/v2/space/${spaceId}/folder`,
     {
       method: 'POST',
@@ -70,12 +69,11 @@ async function createSpace(spaceName) {
         'Content-Type': 'application/json',
         Authorization: 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'
       },
-      body: JSON.stringify({name: contrato})
+      payload: JSON.stringify({ name: contrato })
     }
   );
-  
+
   const data = await resp.json();
   console.log(data);
-  return data
-  }
-  
+  return data;
+}
