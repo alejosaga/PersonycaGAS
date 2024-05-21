@@ -1,12 +1,15 @@
 async function activarCliente() {
-  
-    let ssmasterContractApprove = SpreadsheetApp.openById(contractApproveId)
+    let ssmasterContractApprove = SpreadsheetApp.openById(contractApproveId);
     let sheetAprContr = ssmasterContractApprove.getSheetByName("Datos");
     let lastRowContApr = sheetAprContr.getLastRow();
-    let contrato = sheetAprContr.getRange(lastRowContApr,3).getValue();
-    let nombreRazonSocial = sheetAprContr.getRange(lastRowContApr,6).getValue();
-    /*
+    let contrato = sheetAprContr.getRange(lastRowContApr, 3).getValue();
+    let nombreRazonSocial = sheetAprContr.getRange(lastRowContApr, 6).getValue();
+    
+    
+    
     var parts = contrato.split("-");
+
+    
     
     if(parts[3]== "7"){
         numClien = parts[5]
@@ -44,7 +47,7 @@ async function activarCliente() {
   
   
     //6.Enviar contrato firmado por Personyca al Cliente mediante Email.
-  
+
       var email = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Dirección de correo electrónico");
       var subject = " Contrato adjunto - Confirmar recepción y firma: " + contrato;
       var archivoAdjunto = DriveApp.getFileById(archivoPDFId);
@@ -60,13 +63,22 @@ async function activarCliente() {
           htmlBody: body,
           attachments: [archivoAdjunto.getAs(MimeType.PDF)]
         }); 
-*/
-    //1.Crear plan de Trabajo (Validar la mejor opcion entre crearlo desde una plantilla de Sheets o crearlo directamente en Click Up mediante la API).
+
+    //1.Crear espacio carpeta y lista en clickUp
+    main(nombreRazonSocial, sheetAprContr, lastRowContApr, contrato);
     
         
     // Obtener el ID del espacio, ya sea existente o creado
-    nombreLista = "Cronograma"
-    main(nombreRazonSocial,contrato,nombreLista)
+    
+    //var space1= getSpaceId(nombreRazonSocial) 
+    //console(space1)
+
+  
+
+     
+    //createFolder(espacio, contrato);
+
+
 
     // Manejar el resultado
    

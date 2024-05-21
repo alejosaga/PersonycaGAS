@@ -26,6 +26,11 @@ var approveCotForm = "1FAIpQLSf_ZTWb79JDUbWMtXng8Lnog0Jwod7oxAP2U4nNSIfEQwSs6g";
 var clientAcceptForm = "1FAIpQLSebS5fS5oB9tXnns6OdM6r8RnkC9PzYiU-CoptypDl-mhldPg";
 var approveContractForm = "1FAIpQLScnKWRXGB7XND1zK7msYKoLYEqP1eL-LK7zKEjjW9IFnbMw7A";
 
+//click-Up
+var API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
+var TEAM_ID = '9017178102'; // Reemplaza con el ID de tu equipo en ClickUp
+
+
 /*
 //Prod
 // Id's hojas de calculo
@@ -51,4 +56,9 @@ var personycaEmail2 = "autopersonyca@gmail.com"
 var approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w";
 var clientAcceptForm = "1FAIpQLSfj5LY8b1dnCRnGjrz4lQQ0eu_FUk5RPB5lL6XzO6wJ0O7k2w";
 var approveContractForm = "";
+
+//click-Up
+var API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
+var TEAM_ID = '9013247276'; // Reemplaza con el ID de tu equipo en ClickUp
+
 */
