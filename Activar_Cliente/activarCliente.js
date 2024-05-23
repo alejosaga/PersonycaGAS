@@ -1,4 +1,4 @@
-async function actiletCliente() {
+async function activarCliente() {
     let ssmasterContractApprove = SpreadsheetApp.openById(contractApproveId);
     let sheetAprContr = ssmasterContractApprove.getSheetByName("Datos");
     let lastRowContApr = sheetAprContr.getLastRow();
