@@ -1,6 +1,6 @@
 function cotizar() {
   
-  addRowNumber(SSmaestroCot,"Datos",lastColumnDat-2);
+  addRowNumber(SSmaestroCot,"Datos",lastColumnDat-3);
     
   switch(servicio) {
     case "Consultoria SG-Seguridad y salud en el trabajo":

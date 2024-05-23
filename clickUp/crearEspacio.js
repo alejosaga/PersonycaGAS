@@ -2,24 +2,24 @@ function main(spaceName, sheet, row, contrato) {
   try {
     const spaceId = getSpaceId(spaceName);
     if (spaceId) {
-      console.log(`Espacio encontrado: ${spaceName} (ID: ${spaceId})`);
+      
       sheet.getRange(row, 9).setValue(spaceId);
       const folderId = createFolder(spaceId, contrato);
-      console.log(`ID de la carpeta creada: ${folderId}`);
+      
     } else {
-      console.log(`Espacio no encontrado, creando nuevo espacio: ${spaceName}`);
+      
       const newSpaceId = createSpace(spaceName);
       if (newSpaceId) {
-        console.log(`Espacio creado exitosamente: ${spaceName} (ID: ${newSpaceId})`);
+        
         sheet.getRange(row, 9).setValue(newSpaceId);
         const folderId = createFolder(newSpaceId, contrato);
         console.log(`ID de la carpeta creada: ${folderId}`);
       } else {
-        console.error('No se pudo crear el espacio.');
+        
       }
     }
   } catch (error) {
-    console.error('Error en el flujo principal:', error);
+    
   }
 }
 
@@ -39,7 +39,7 @@ function getSpaceId(spaceName) {
     const space = data.spaces.find(space => space.name === spaceName);
     return space ? space.id : null;
   } catch (error) {
-    console.error('Error obteniendo el ID del espacio:', error);
+    
     return null;
   }
 }
@@ -80,14 +80,14 @@ function createSpace(spaceName) {
     const response = UrlFetchApp.fetch(url, options);
     const data = JSON.parse(response.getContentText());
     if (data.id) {
-      console.log(`Espacio creado: ${spaceName} (ID: ${data.id})`);
+      
       return data.id;
     } else {
-      console.error('Error en la respuesta de creación del espacio:', data);
+      
       return null;
     }
   } catch (error) {
-    console.error('Error creando el espacio:', error);
+    
     return null;
   }
 }
@@ -110,22 +110,22 @@ function createFolder(spaceId, folderName) {
   try {
     const response = UrlFetchApp.fetch(url, options);
     const content = response.getContentText();
-    console.log(`Respuesta de la API al crear la carpeta: ${content}`);
+    
     const data = JSON.parse(content);
 
     if (data.id) {
-      console.log(`Folder creado: ${folderName} (ID: ${data.id})`);
+      
       
       // Creamos la lista dentro de la carpeta
       const listId = createList(spaceId, data.id, "Mi Lista");
 
       return data.id;
     } else {
-      console.error('Error creando el folder:', data);
+      
       return null;
     }
   } catch (error) {
-    console.error('Error creando el folder:', error);
+    
     return null;
   }
 }
@@ -147,18 +147,18 @@ function createList(spaceId, folderId, listName) {
   try {
     const response = UrlFetchApp.fetch(url, options);
     const content = response.getContentText();
-    console.log(`Respuesta de la API al crear la lista: ${content}`);
+    
     const data = JSON.parse(content);
 
     if (data.id) {
-      console.log(`Lista creada: ${listName} (ID: ${data.id})`);
+      
       return data.id;
     } else {
-      console.error('Error creando la lista:', data);
+      
       return null;
     }
   } catch (error) {
-    console.error('Error creando la lista:', error);
+    
     return null;
   }
 }

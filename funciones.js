@@ -50,8 +50,8 @@ function crearCarpetaCot(servi) {
     let newFolder = DriveApp.getFoldersByName(folderName).next();
     let clientFolderId = newFolder.getId();
     let clientFolderURL = newFolder.getUrl();
-    sheetDatos.getRange(lastRowDat,lastColumnDat-1).setValue(clientFolderId);
-    sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(clientFolderURL);
+    sheetDatos.getRange(lastRowDat,lastColumnDat-2).setValue(clientFolderId);
+    sheetDatos.getRange(lastRowDat,lastColumnDat-1).setValue(clientFolderURL);
     // Obtén las subcarpetas dentro del folder inicial
     let newFolder1 = newFolder.createFolder(servi);
     let subFolder1 = newFolder1.createFolder("Cotizaciones");
@@ -79,8 +79,8 @@ function crearCarpetaCot(servi) {
         let folder = subfolder.getFoldersByName("Cotizaciones").next();
         let folderURL = folder.getUrl();
 
-        sheetDatos.getRange(lastRowDat,lastColumnDat-1).setValue(inicialFolderId);
-        sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(inicialFolderUrl);
+        sheetDatos.getRange(lastRowDat,lastColumnDat-2).setValue(inicialFolderId);
+        sheetDatos.getRange(lastRowDat,lastColumnDat-1).setValue(inicialFolderUrl);
            
         return {id: folderId, url: folderURL};              
         

@@ -18,12 +18,11 @@ function crearContrato() {
     let camaraDeComercio = sheetContracts.getRange(contractLastRow,13).getValue();
     let cedula = sheetContracts.getRange(contractLastRow,14).getValue();
 
-
+    let numClien = searchValues(maestroCotId,cot,"Datos","cotizacion","Codigo Cliente");
 
     let parts = cot.split("-");
     let meses = 0;
     let plantilla = "";
-    let numClien = "";
     let valPer = 0;
     let valAnti = 0;
     let numTra = 0;
@@ -33,22 +32,21 @@ function crearContrato() {
     if (parts[3] == "7") {
       meses = 3;
       plantilla = contrato7estandares;
-      numClien = parts[5];
+      
     } else if (parts[2] == "PSI") {
       meses = 3;
       plantilla = contratoPSI;
-      numClien = parts[3];
       valPer = searchValues(batPsiServiceId, cot, "Aplicacion Bateria riesgo psicosocial", "slideName", "ValorPersona");
       valAnti = searchValues(batPsiServiceId, cot, "Aplicacion Bateria riesgo psicosocial", "slideName", "valAnti");
-      numTra = searchValues(maestroCotId, numClien, "Datos", "Codigo Cliente", "Por favor indique la cantidad de trabajadores que deben aplicar para la bateria de riesgo Psicosocial.");
+      numTra = searchValues(maestroCotId, cot, "Datos", "cotizacion", "Por favor indique la cantidad de trabajadores que deben aplicar para la bateria de riesgo Psicosocial.");
     } else {
       meses = 12;
       plantilla = contratoSgsst;
-      numClien = parts[3];
+      
     }
 
 
-    let numEmp = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","¿Cuántos trabajadores tiene actualmente directos?*");
+    let numEmp = searchValues(maestroCotId,cot, "Datos", "cotizacion","¿Cuántos trabajadores tiene actualmente directos?*");
 
 
 

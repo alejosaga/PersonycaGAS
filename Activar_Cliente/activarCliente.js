@@ -6,20 +6,13 @@ async function activarCliente() {
     let nombreRazonSocial = sheetAprContr.getRange(lastRowContApr, 6).getValue();
     
     
+    let numClien = searchValues(maestroCotId,contrato,"Datos","cotizacion","Codigo Cliente");
     
-    let parts = contrato.split("-");
+    let clientEmail_1 = searchValues(maestroCotId,contrato,"Datos","cotizacion","Dirección de correo electrónico");
+    let clientEmail_2 = searchValues(maestroCotId,contrato,"Datos","cotizacion","Segundo correo electronico (opcional)");
+
 
     
-    
-    if(parts[3]== "7"){
-        numClien = parts[5]
-    }
-    else{
-      
-      numClien = parts[3]
-    }
-    //let email1 = 'autopesonyca@gmail.com';
-    let email2 = 'autopesonyca@gmail.com';
     
     let service = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Servicios de interes")
   
@@ -57,8 +50,8 @@ async function activarCliente() {
 
       let body = dataToSend;
       MailApp.sendEmail({
-          to: email,
-          cc: email2,
+          to: clientEmail_1,
+          cc: clientEmail_2,
           subject: subject,
           htmlBody: body,
           attachments: [archivoAdjunto.getAs(MimeType.PDF)]

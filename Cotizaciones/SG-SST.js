@@ -52,12 +52,13 @@ function sgSst() {
   let numeroContratistas = valoresEncontrados[3]* tarifaBasica;
   let vehiculos = valoresEncontrados[4]*datVehi* tarifaBasica;
   let centros = valoresEncontrados[5]*datCent* tarifaBasica;
+  let altoRiesgo = 0
   
   if(datAltRies=="Ninguno de los anteriores"){
-    let altoRiesgo = 0
+     altoRiesgo = 0
   }
   else{
-    let altoRiesgo = valoresEncontrados[6]*datAltRiesSplited* tarifaBasica
+     altoRiesgo = valoresEncontrados[6]*datAltRiesSplited* tarifaBasica
 
   }
   ;
@@ -177,6 +178,8 @@ function sgSst() {
 
   let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
   sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
+
+  sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
   let dataClient = htmlData(SSmaestroCot,"Datos",2,23);
   let dataValue = htmlData(SServicio,servicio,3,18);
