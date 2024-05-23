@@ -1,12 +1,12 @@
 function buscarTarifas(caracteristicas) {
   let data = sheetTarifas.getDataRange().getValues();
   let headers = data[0]; 
-  var conditionIndex = headers.indexOf("VlrBuscar");
-  var valueIndex = headers.indexOf("peso");
+  let conditionIndex = headers.indexOf("VlrBuscar");
+  let valueIndex = headers.indexOf("peso");
 
-  var valoresEncontrados = []; // Nueva matriz para almacenar los valores encontrados
+  let valoresEncontrados = []; // Nueva matriz para almacenar los valores encontrados
 
-  var condicionesEncontradas = data.filter(function(row) {
+  let condicionesEncontradas = data.filter(function(row) {
     
     return caracteristicas.includes(row[conditionIndex]);
   });
@@ -29,10 +29,10 @@ function buscarTarifas(caracteristicas) {
 
 function addRowNumber(SServicio,sheetName,columnNumber) {
  
-  var sheet = SServicio.getSheetByName(sheetName);
-  var data = sheet.getDataRange().getValues();
-  var nextNumber = 1;
-  for (var i = 1; i < data.length; i++) { // start at 1 to skip the header row
+  let sheet = SServicio.getSheetByName(sheetName);
+  let data = sheet.getDataRange().getValues();
+  let nextNumber = 1;
+  for (let i = 1; i < data.length; i++) { // start at 1 to skip the header row
     sheet.getRange(i+1, columnNumber).setValue(nextNumber); // write the next number in column C of the current row
     nextNumber++;
   }
@@ -40,44 +40,44 @@ function addRowNumber(SServicio,sheetName,columnNumber) {
 function crearCarpetaCot(servi) {
   
   // Obtén el valor de la columna deseada de la última fila
-  var folderName = sheetDatos.getRange(lastRowDat, 6).getValue(); // en este caso es la columna 6
+  let folderName = sheetDatos.getRange(lastRowDat, 6).getValue(); // en este caso es la columna 6
    // Valida si ya existe una carpeta con el mismo nombre
-  var existeCarpeta = carpetaRaiz.getFoldersByName(folderName).hasNext();
+  let existeCarpeta = carpetaRaiz.getFoldersByName(folderName).hasNext();
   
   // Crea la carpeta con el nombre del cliente en la carpeta prospectos
   if (!existeCarpeta) {
-    var folder = carpetaRaiz.createFolder(folderName);
-    var newFolder = DriveApp.getFoldersByName(folderName).next();
-    var clientFolderId = newFolder.getId();
-    var clientFolderURL = newFolder.getUrl();
+    let folder = carpetaRaiz.createFolder(folderName);
+    let newFolder = DriveApp.getFoldersByName(folderName).next();
+    let clientFolderId = newFolder.getId();
+    let clientFolderURL = newFolder.getUrl();
     sheetDatos.getRange(lastRowDat,lastColumnDat-1).setValue(clientFolderId);
     sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(clientFolderURL);
     // Obtén las subcarpetas dentro del folder inicial
-    var newFolder1 = newFolder.createFolder(servi);
-    var subFolder1 = newFolder1.createFolder("Cotizaciones");
+    let newFolder1 = newFolder.createFolder(servi);
+    let subFolder1 = newFolder1.createFolder("Cotizaciones");
     subFolder1.createFolder("PDF")
     subFolder1.createFolder("DOC")
     
     
-    var folderId = newFolder1.getId();
-    var folderURL = subFolder1.getUrl();
+    let folderId = newFolder1.getId();
+    let folderURL = subFolder1.getUrl();
     return {id: folderId, url: folderURL};
     
   }else{
-    var folderExists = false;
+    let folderExists = false;
   
   // Obtén las subcarpetas dentro del folder inicial
-  var inicialFolder = carpetaRaiz.getFoldersByName(folderName).next();
-  var inicialFolderId = inicialFolder.getId();
-  var inicialFolderUrl = inicialFolder.getUrl();
-  var subfolders = inicialFolder.getFolders();
+  let inicialFolder = carpetaRaiz.getFoldersByName(folderName).next();
+  let inicialFolderId = inicialFolder.getId();
+  let inicialFolderUrl = inicialFolder.getUrl();
+  let subfolders = inicialFolder.getFolders();
     while (subfolders.hasNext()) {
-      var subfolder = subfolders.next();
+      let subfolder = subfolders.next();
       if (subfolder.getName() == servi) {
         folderExists = true;
-        var folderId = subfolder.getId();
-        var folder = subfolder.getFoldersByName("Cotizaciones").next();
-        var folderURL = folder.getUrl();
+        let folderId = subfolder.getId();
+        let folder = subfolder.getFoldersByName("Cotizaciones").next();
+        let folderURL = folder.getUrl();
 
         sheetDatos.getRange(lastRowDat,lastColumnDat-1).setValue(inicialFolderId);
         sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(inicialFolderUrl);
@@ -87,14 +87,14 @@ function crearCarpetaCot(servi) {
       }   
     }  
     if (!folderExists) {  
-      var newFolder = inicialFolder.createFolder(servi);
-      var subFolder1 = newFolder.createFolder("Cotizaciones");
+      let newFolder = inicialFolder.createFolder(servi);
+      let subFolder1 = newFolder.createFolder("Cotizaciones");
       subFolder1.createFolder("PDF")
       subFolder1.createFolder("DOC")
       
       
-      var folderId = newFolder.getId();
-      var folderURL = subFolder1.getUrl();
+      let folderId = newFolder.getId();
+      let folderURL = subFolder1.getUrl();
       
     }
   }
@@ -104,12 +104,12 @@ function crearCarpetaCot(servi) {
 
 function obtenerActividad(ciiu){
 
-  var ciiuEmp = ciiu
-  var searchValue = ciiuEmp;
-  var sheet = sheetCiiu;
-  var data = sheet.getDataRange().getValues();
+  let ciiuEmp = ciiu
+  let searchValue = ciiuEmp;
+  let sheet = sheetCiiu;
+  let data = sheet.getDataRange().getValues();
     
-    var result = "";
+    let result = "";
     result += "<table border='1' cellspacing='0' cellpadding='5'>" +
               "<tr>" +
               "<th>Codigo CIIU</th>" +
@@ -117,7 +117,7 @@ function obtenerActividad(ciiu){
               "<th>CLASE DE RIESGO</th>" +
               "<th>DESCRIPCIÓN DE ACTIVIDAD ECONÓMICA FINAL</th>" +
               "</tr>";
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       if (data[i][1] == searchValue) {
         result += "<tr><td>" + searchValue + "</td>" +
                   "<td>" + data[i][2] + "</td>" +
@@ -136,25 +136,25 @@ function obtenerActividad(ciiu){
 
 function preFilledForm(total,sheetCotizaciones,lastRowCot,column){
   //Form aprobacion pre-llenado
-  var slideName = sheetCotizaciones.getRange(lastRowCot+1,column).getValue();
+  let slideName = sheetCotizaciones.getRange(lastRowCot+1,column).getValue();
   console.log(slideName);
-  var numCot = slideName.replace(/ /g, '+');
-  var hojaCot = servicio.replace(/ /g, '+');
-  var companyName = razonSocial.replace(/ /g, '+');
-  var prefilledForm= "https://docs.google.com/"+approveCotForm+"/viewform?usp=pp_url&entry.1149107413="+hojaCot+"&entry.1538120679="+nit+"&entry.127145366="+numCot+"&entry.1514100276="+total+"&entry.933752610="+companyName
+  let numCot = slideName.replace(/ /g, '+');
+  let hojaCot = servicio.replace(/ /g, '+');
+  let companyName = razonSocial.replace(/ /g, '+');
+  let prefilledForm= "https://docs.google.com/forms/d/e/"+approveCotForm+"/viewform?usp=pp_url&entry.1149107413="+hojaCot+"&entry.1538120679="+nit+"&entry.127145366="+numCot+"&entry.1514100276="+total+"&entry.933752610="+companyName
 
   return prefilledForm;
 }
 
 function htmlData(libro,hoja,col1,col2) {
-    var sheet = libro.getSheetByName(hoja)
-    var lastRow = sheet.getLastRow();
-    var lastColumn = sheet.getLastColumn();
-    var dataRange = sheet.getRange(lastRow, col1, lastRow, col2);
-    var data = dataRange.getValues();
-    var headers = sheet.getRange(1, col1, 1, col2).getValues();
-    var formResponse = "<table style='width:100%; font-size:14px; border: 1px solid black; border-collapse: collapse;'><tr style='background-color: lightgray;'><th style='border: 1px solid black; padding: 10px;'>Pregunta</th><th style='border: 1px solid black; padding: 10px;'>Respuesta</th></tr>";
-    for (var i = 0; i < data[0].length; i++) {
+    let sheet = libro.getSheetByName(hoja)
+    let lastRow = sheet.getLastRow();
+    let lastColumn = sheet.getLastColumn();
+    let dataRange = sheet.getRange(lastRow, col1, lastRow, col2);
+    let data = dataRange.getValues();
+    let headers = sheet.getRange(1, col1, 1, col2).getValues();
+    let formResponse = "<table style='width:100%; font-size:14px; border: 1px solid black; border-collapse: collapse;'><tr style='background-color: lightgray;'><th style='border: 1px solid black; padding: 10px;'>Pregunta</th><th style='border: 1px solid black; padding: 10px;'>Respuesta</th></tr>";
+    for (let i = 0; i < data[0].length; i++) {
       formResponse += "<tr style='border: 1px solid black;'><td style='border: 1px solid black; padding: 10px;'>" + headers[0][i] + "</td><td style='border: 1px solid black; padding: 10px;'>" + data[0][i] + "</td></tr>";
     }
     formResponse += "</table>";
@@ -167,7 +167,7 @@ function formatoColombiano(valor) {
     currency: "COP"
   }).format(valor);
 }
-var numeroALetras = (function() {
+let numeroALetras = (function() {
     // Código basado en el comentario de @sapienman
     // Código basado en https://gist.github.com/alfchee/e563340276f89b22042a
     function Unidades(num) {
@@ -335,8 +335,8 @@ var numeroALetras = (function() {
             enteros: Math.floor(num),
             centavos: (((Math.round(num * 100)) - (Math.floor(num) * 100))),
             letrasCentavos: '',
-            letrasMonedaPlural: currency.plural || 'PESOS CHILENOS', //'PESOS', 'Dólares', 'Bolívares', 'etcs'
-            letrasMonedaSingular: currency.singular || 'PESO CHILENO', //'PESO', 'Dólar', 'Bolivar', 'etc'
+            letrasMonedaPlural: currency.plural || 'PESOS CHILENOS', //'PESOS', 'Dólares', 'Bolíletes', 'etcs'
+            letrasMonedaSingular: currency.singular || 'PESO CHILENO', //'PESO', 'Dólar', 'Bolilet', 'etc'
             letrasMonedaCentavoPlural: currency.centPlural || 'CHIQUI PESOS CHILENOS',
             letrasMonedaCentavoSingular: currency.centSingular || 'CHIQUI PESO CHILENO'
         };
@@ -361,18 +361,18 @@ var numeroALetras = (function() {
 })();
 function getFolderIds(sgSstFolderId) {
   
-  var sgSstFolder = DriveApp.getFolderById(sgSstFolderId);
-  var cotizacionesFolder = sgSstFolder.getFoldersByName("Cotizaciones").next();
-  var docFolder = cotizacionesFolder.getFoldersByName("DOC").next();
-  var pdfFolder = cotizacionesFolder.getFoldersByName("PDF").next();
+  let sgSstFolder = DriveApp.getFolderById(sgSstFolderId);
+  let cotizacionesFolder = sgSstFolder.getFoldersByName("Cotizaciones").next();
+  let docFolder = cotizacionesFolder.getFoldersByName("DOC").next();
+  let pdfFolder = cotizacionesFolder.getFoldersByName("PDF").next();
   return {doc: docFolder.getId(), pdf: pdfFolder.getId()};
   
 }
 function sendEmail(numCot,link,dataToSend) {
 
-  var firstName = "Nancy";
-  var subject = "Revisar: " + numCot;
-  var body = '<p>Hola <strong>'+ firstName +'</strong>, tenemos una nueva cotizacion por revisar para la empresa <strong>'+razonSocial+'</strong> para el servicio de '+servicio+'.</p> <p>Adjunto se encuentra el archivo PDF y un link donde podras encontrar el detalle de la cotizacion y si se requiere hacer los cambios que se consideren pertinentes.'+link+'<p>Tambien podras revisar los valores en el archivo maestro en la hoja de cotizaciones correspondiente</p>'+linkMaestro+'<p>Las siguientes son las respuestas al formulario de diagnostico: </p>'+dataToSend;
+  let firstName = "Nancy";
+  let subject = "Revisar: " + numCot;
+  let body = '<p>Hola <strong>'+ firstName +'</strong>, tenemos una nueva cotizacion por revisar para la empresa <strong>'+razonSocial+'</strong> para el servicio de '+servicio+'.</p> <p>Adjunto se encuentra el archivo PDF y un link donde podras encontrar el detalle de la cotizacion y si se requiere hacer los cambios que se consideren pertinentes.'+link+'<p>Tambien podras revisar los valores en el archivo maestro en la hoja de cotizaciones correspondiente</p>'+linkMaestro+'<p>Las siguientes son las respuestas al formulario de diagnostico: </p>'+dataToSend;
   MailApp.sendEmail({
       to: personycaEmail1,
       cc: personycaEmail2,
@@ -383,26 +383,30 @@ function sendEmail(numCot,link,dataToSend) {
 
 
 function searchValues(ssId, vlrBuscado, sheetName, colBuscada, colRespuesta) {
-  var cacheKey = ssId + '_' + sheetName;
+  let cacheKey = ssId + '_' + sheetName;
+  let cachedData = {}; // Assuming you have some caching mechanism in place
 
   // Verificar si los datos ya están en caché
   if (!cachedData[cacheKey]) {
-    var spreadSheet = SpreadsheetApp.openById(ssId);
-    var sheet = spreadSheet.getSheetByName(sheetName);
-    var data = sheet.getDataRange().getValues();
+    let spreadSheet = SpreadsheetApp.openById(ssId);
+    let sheet = spreadSheet.getSheetByName(sheetName);
+    if (!sheet) {
+      throw new Error("Sheet not found: " + sheetName);
+    }
+    let data = sheet.getDataRange().getValues();
     cachedData[cacheKey] = data; // Guardar los datos en caché
   }
   
-  var data = cachedData[cacheKey];
-  var headers = data[0];
-  var conditionIndex = headers.indexOf(colBuscada);
-  var valueIndex = headers.indexOf(colRespuesta);
+  let data = cachedData[cacheKey];
+  let headers = data[0];
+  let conditionIndex = headers.indexOf(colBuscada);
+  let valueIndex = headers.indexOf(colRespuesta);
 
-  var condition = vlrBuscado;
+  let condition = vlrBuscado;
 
   // Recorrer las filas en orden ascendente
-  for (var rowIndex = data.length - 1; rowIndex >= 0; rowIndex--) {
-    var row = data[rowIndex];
+  for (let rowIndex = data.length - 1; rowIndex >= 0; rowIndex--) {
+    let row = data[rowIndex];
     if (row[conditionIndex] == condition) {
       return row[valueIndex];
     }
@@ -413,59 +417,59 @@ function searchValues(ssId, vlrBuscado, sheetName, colBuscada, colRespuesta) {
 }
 
 function firstWordToTitleCase(str) {
-    var firstWord = str.split(" ")[0];
+    let firstWord = str.split(" ")[0];
     return firstWord.charAt(0).toUpperCase() + firstWord.substring(1).toLowerCase();
     
   }
   function convertirFecha(fecha) {
-    var fechaOriginal = fecha;
-    var fecha = new Date(fechaOriginal);
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    var fechaConvertida = fecha.toLocaleDateString('es-ES', options);
+    let fechaOriginal = fecha;
+    let fecha1 = new Date(fechaOriginal);
+    let options = { year: 'numeric', month: 'long', day: 'numeric' };
+    let fechaConvertida = fecha1.toLocaleDateString('es-ES', options);
     fechaConvertida = fechaConvertida.charAt(0).toUpperCase() + fechaConvertida.slice(1);
     fechaConvertida = fechaConvertida.replace('De', 'de');
     return fechaConvertida;
     
   }
   function trasladarCarpeta(idCarpetaTrasladar, idCarpetaDestino) {
-    var carpetaTrasladar = DriveApp.getFolderById(idCarpetaTrasladar);
-    var carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
+    let carpetaTrasladar = DriveApp.getFolderById(idCarpetaTrasladar);
+    let carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
   
-    var nuevaCarpeta = carpetaDestino.createFolder(carpetaTrasladar.getName());
+    let nuevaCarpeta = carpetaDestino.createFolder(carpetaTrasladar.getName());
     copiarContenido(carpetaTrasladar, nuevaCarpeta);
   
     //carpetaTrasladar.setTrashed(true);
-    var newFolderId = nuevaCarpeta.getId();
+    let newFolderId = nuevaCarpeta.getId();
     return newFolderId
   }
   
   function copiarContenido(carpetaOrigen, carpetaDestino) {
-    var archivos = carpetaOrigen.getFiles();
+    let archivos = carpetaOrigen.getFiles();
     while (archivos.hasNext()) {
-      var archivo = archivos.next();
+      let archivo = archivos.next();
       archivo.makeCopy(archivo.getName(), carpetaDestino);
     }
     
-    var subCarpetas = carpetaOrigen.getFolders();
+    let subCarpetas = carpetaOrigen.getFolders();
     while (subCarpetas.hasNext()) {
-      var subCarpetaOrigen = subCarpetas.next();
-      var nuevaSubCarpetaDestino = carpetaDestino.createFolder(subCarpetaOrigen.getName());
+      let subCarpetaOrigen = subCarpetas.next();
+      let nuevaSubCarpetaDestino = carpetaDestino.createFolder(subCarpetaOrigen.getName());
       copiarContenido(subCarpetaOrigen, nuevaSubCarpetaDestino);
     }
   }
   function convertirDocAPDF(idArchivo, idCarpetaDestino) {
-    var archivo = DriveApp.getFileById(idArchivo);
-    var carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
+    let archivo = DriveApp.getFileById(idArchivo);
+    let carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
   
-    var blobPDF = archivo.getAs('application/pdf');
-    var nombrePDF = archivo.getName() + ".pdf";
-    var archivoPDF = carpetaDestino.createFile(blobPDF).setName(nombrePDF);
+    let blobPDF = archivo.getAs('application/pdf');
+    let nombrePDF = archivo.getName() + ".pdf";
+    let archivoPDF = carpetaDestino.createFile(blobPDF).setName(nombrePDF);
   
     return archivoPDF.getId();
   }
   function getIdFromUrl(url) {
-    var id = "";
-    var match = url.match(/[-\w]{25,}/);
+    let id = "";
+    let match = url.match(/[-\w]{25,}/);
     if (match) {
       id = match[0];
     }
@@ -478,7 +482,7 @@ function firstWordToTitleCase(str) {
         throw new Error('Invalid data format');
       }
   
-      var found = data.spaces.some(space => space.name === spaceName);
+      let found = data.spaces.some(space => space.name === spaceName);
       return found;
     } catch (error) {
       //console.error('Error finding space by name:', error);

@@ -1,42 +1,54 @@
 function crearContrato() {
  
-    var SSmaestroContratos = SpreadsheetApp.openById(contractmaestroId);
-    var sheetContracts = SSmaestroContratos.getSheetByName("Datos");
-    var contractLastRow = sheetContracts.getLastRow();
-    var ContractLastColumn = sheetContracts.getLastColumn();
-    var nit = sheetContracts.getRange(contractLastRow,6).getValue();
+    let SSmaestroContratos = SpreadsheetApp.openById(contractmaestroId);
+    let sheetContracts = SSmaestroContratos.getSheetByName("Datos");
+    let contractLastRow = sheetContracts.getLastRow();
+    let ContractLastColumn = sheetContracts.getLastColumn();
+    let nit = sheetContracts.getRange(contractLastRow,6).getValue();
 
-    var razonSocial = sheetContracts.getRange(contractLastRow,7).getValue();
-    var repLegal = sheetContracts.getRange(contractLastRow,8).getValue();
-    var numCedula = sheetContracts.getRange(contractLastRow,7).getValue();
-    var ciudadCliente = sheetContracts.getRange(contractLastRow,9).getValue();
-    var dirCliente = sheetContracts.getRange(contractLastRow,10).getValue();
-    var valor = sheetContracts.getRange(contractLastRow,3).getValue();
-    var valPesosCol = formatoColombiano(valor);
-    var cot = sheetContracts.getRange(contractLastRow,2).getValue();
-    var rut = sheetContracts.getRange(contractLastRow,12).getValue();
-    var camaraDeComercio = sheetContracts.getRange(contractLastRow,13).getValue();
-    var cedula = sheetContracts.getRange(contractLastRow,14).getValue();
+    let razonSocial = sheetContracts.getRange(contractLastRow,7).getValue();
+    let repLegal = sheetContracts.getRange(contractLastRow,8).getValue();
+    let numCedula = sheetContracts.getRange(contractLastRow,9).getValue();
+    let ciudadCliente = sheetContracts.getRange(contractLastRow,10).getValue();
+    let dirCliente = sheetContracts.getRange(contractLastRow,11).getValue();
+    let valor = sheetContracts.getRange(contractLastRow,3).getValue();
+    let valPesosCol = formatoColombiano(valor);
+    let cot = sheetContracts.getRange(contractLastRow,2).getValue();
+    let rut = sheetContracts.getRange(contractLastRow,12).getValue();
+    let camaraDeComercio = sheetContracts.getRange(contractLastRow,13).getValue();
+    let cedula = sheetContracts.getRange(contractLastRow,14).getValue();
 
 
 
-    var parts = cot.split("-");
-    var meses = 0;
-    var plantilla = "";
+    let parts = cot.split("-");
+    let meses = 0;
+    let plantilla = "";
+    let numClien = "";
+    let valPer = 0;
+    let valAnti = 0;
+    let numTra = 0;
 
-    if(parts[3]== "7"){
-    meses = 3;
-    plantilla = contrato7estandares;
-    numClien = parts[5]
+   
+
+    if (parts[3] == "7") {
+      meses = 3;
+      plantilla = contrato7estandares;
+      numClien = parts[5];
+    } else if (parts[2] == "PSI") {
+      meses = 3;
+      plantilla = contratoPSI;
+      numClien = parts[3];
+      valPer = searchValues(batPsiServiceId, cot, "Aplicacion Bateria riesgo psicosocial", "slideName", "ValorPersona");
+      valAnti = searchValues(batPsiServiceId, cot, "Aplicacion Bateria riesgo psicosocial", "slideName", "valAnti");
+      numTra = searchValues(maestroCotId, numClien, "Datos", "Codigo Cliente", "Por favor indique la cantidad de trabajadores que deben aplicar para la bateria de riesgo Psicosocial.");
+    } else {
+      meses = 12;
+      plantilla = contratoSgsst;
+      numClien = parts[3];
     }
-    else{
-    meses = 12;
-    plantilla = contratoSgsst;
-    numClien = parts[3]
-    }
 
 
-    var numEmp = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","¿Cuántos trabajadores tiene actualmente directos?*");
+    let numEmp = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","¿Cuántos trabajadores tiene actualmente directos?*");
 
 
 
@@ -45,48 +57,64 @@ function crearContrato() {
     
     let fechaInicio = sheetContracts.getRange(contractLastRow,4).getValue();
     let valorTotal = valor*meses
+    let valPerPesos = formatoColombiano(valPer)
+    let valAntiPesos = formatoColombiano(valAnti)
     let valtotpesosCol = formatoColombiano(valorTotal)
     let mesesL = numeroALetras(meses)
     let meseLe = mesesL.split(" ")
       
     //fecha de hoy
-    var today = new Date();
-    var yyyy = today.getFullYear();
+    let today = new Date();
+    let yyyy = today.getFullYear();
     
    //Valores A letras
-    var valorLetras = numeroALetras(valor, {
+   let valPerLetras = numeroALetras(valPer, {
+    plural: "PESOS",
+    singular: "PESO",
+    centPlural: "CENTAVOS",
+    centSingular: "CENTAVO"
+  });
+
+  let valAntiLetras = numeroALetras(valAnti, {
+    plural: "PESOS",
+    singular: "PESO",
+    centPlural: "CENTAVOS",
+    centSingular: "CENTAVO"
+  });
+
+    let valorLetras = numeroALetras(valor, {
       plural: "PESOS",
       singular: "PESO",
       centPlural: "CENTAVOS",
       centSingular: "CENTAVO"
     });
   
-    var valorTotalLetras = numeroALetras(valorTotal, {
+    let valorTotalLetras = numeroALetras(valorTotal, {
       plural: "PESOS",
       singular: "PESO",
       centPlural: "CENTAVOS",
       centSingular: "CENTAVO"
     });
     
-    var fecIni = new Date(fechaInicio.getFullYear(), fechaInicio.getMonth(), fechaInicio.getDate());
-    var fechaFin = new Date(fechaInicio.getFullYear(), fechaInicio.getMonth() + meses, fechaInicio.getDate());
+    let fecIni = new Date(fechaInicio.getFullYear(), fechaInicio.getMonth(), fechaInicio.getDate());
+    let fechaFin = new Date(fechaInicio.getFullYear(), fechaInicio.getMonth() + meses, fechaInicio.getDate());
     
     // Obtener Data de archivo clientes-Cotizaciones
   
     
     
-    var contractFolder = DriveApp.getFolderById(createContractFolder());
+    let contractFolder = DriveApp.getFolderById(createContractFolder(numClien));
   
      
     //obtener plantilla contratos y crear copia
-    var idPlantilla = DriveApp.getFileById(plantilla);
-    var copy = idPlantilla.makeCopy("CONTRATO-"+cot,contractFolder);
-    var urlContrato = copy.getUrl();
+    let idPlantilla = DriveApp.getFileById(plantilla);
+    let copy = idPlantilla.makeCopy("CONTRATO-"+cot,contractFolder);
+    let urlContrato = copy.getUrl();
     sheetContracts.getRange(contractLastRow,ContractLastColumn).setValue(urlContrato);
-    var docId = copy.getId();
-    var doc = DocumentApp.openById(docId);
-    var body = doc.getBody();
-    var header = doc.getHeader();
+    let docId = copy.getId();
+    let doc = DocumentApp.openById(docId);
+    let body = doc.getBody();
+    let header = doc.getHeader();
   
     
   
@@ -98,9 +126,14 @@ function crearContrato() {
     header.replaceText("{{razonSocial}}", razonSocial.toString().toUpperCase());
     body.replaceText("{{nit}}", nit);
     body.replaceText("{{numEmp}}", numEmp);
+    body.replaceText("{{numTra}}", numTra);
     body.replaceText("{{ciudadCliente}}", ciudadCliente.toString().toUpperCase());
     body.replaceText("{{dirCliente}}", dirCliente);
     body.replaceText("{{anio}}", yyyy);
+    body.replaceText("{{valPer}}", valPerPesos);
+    body.replaceText("{{valPerletras}}", valPerLetras);
+    body.replaceText("{{valAntiPesos}}", valAntiPesos);
+    body.replaceText("{{valAntiLetras}}", valAntiLetras);
     body.replaceText("{{valorLetras}}", valorLetras);
     body.replaceText("{{valor}}", valPesosCol);
     body.replaceText("{{valorTotalLetras}}", valorTotalLetras);
@@ -117,8 +150,8 @@ function crearContrato() {
   
     
   
-    var contractFolderID = contractFolder.getId();
-    var contractFolderUrl = contractFolder.getUrl(); 
+    let contractFolderID = contractFolder.getId();
+    let contractFolderUrl = contractFolder.getUrl(); 
     sheetContracts.getRange(contractLastRow,18).setValue(contractFolderID);  
   
     trasladarArchivo(contractFolderID, rut,"RUT-"+ razonSocial)
@@ -126,69 +159,69 @@ function crearContrato() {
     trasladarArchivo(contractFolderID, cedula,"Cedula Rep. Legal " + razonSocial)
     // formulario de aprobacion
   
-    var contratoName = contrato.replace(/ /g, '+');
-    var companyName = nombre.replace(/ /g, '+');  
-    var form= "https://docs.google.com/forms/d/e/"+approveContractForm+"/viewform?usp=pp_url&entry.2087970223="+id+"&entry.653991903="+companyName+"&entry.1862569191="+contratoName+"&entry.120278530="+valor;
+    let contratoName = cot.replace(/ /g, '+');
+    let companyName = razonSocial.replace(/ /g, '+');  
+    let form= "https://docs.google.com/forms/d/e/"+approveContractForm+"/viewform?usp=pp_url&entry.2087970223="+nit+"&entry.653991903="+companyName+"&entry.1862569191="+contratoName+"&entry.120278530="+valor;
   
   
     // envio de mail para aprobacion
-    var firstName = "Nancy";
-    var subject = "Revisar contrato: " + numCot+2;
-    var body = '<p>Hola <strong>'+ firstName +'</strong>, Tenemos un nuevo cliente!! La empresa <strong>'+razonSocial+'</strong> ha decidido aceptar la cotizacion '+numCot+'.</p> <p>A el borrador de contrato y la documentacion adjunta por el cliente para revision se encuentra en la siguiente carpeta'+contractFolderUrl+' y el link correspondiente al formulario de aprobacion.'+form+'<p>Una vez envies el formulario aceptando el contrato, este será enviado al cliente en PDF 2. </p>'
+    let firstName = "Nancy";
+    let subject = "Revisar contrato: " + cot;
+    let emailBody = '<p>Hola <strong>'+ firstName +'</strong>, Tenemos un nuevo cliente!! La empresa <strong>'+razonSocial+'</strong> ha decidido aceptar la cotizacion '+cot+'.</p> <p>A el borrador de contrato y la documentacion adjunta por el cliente para revision se encuentra en la siguiente carpeta'+contractFolderUrl+' y el link correspondiente al formulario de aprobacion.'+form+'<p>Una vez envies el formulario aceptando el contrato, este será enviado al cliente en PDF 2. </p>'
     MailApp.sendEmail({
-        to: email,
-        cc: email2,
+        to: personycaEmail1,
+        cc: personycaEmail2,
         subject: subject,
-        htmlBody: body
+        htmlBody: emailBody
         
         }); 
        
   }
 
-function createContractFolder() {
-  var folderId = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","clientFolderId");
-  var folderName = "CONTRATOS";
+function createContractFolder(numClien) {
+  let folderId = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","clientFolderId");
+  let folderName = "CONTRATOS";
 
   
   // Buscar la carpeta "contratos" en el folder padre
-  var parentFolder = DriveApp.getFolderById(folderId);
-  var existingFolders = parentFolder.getFoldersByName(folderName);
+  let parentFolder = DriveApp.getFolderById(folderId);
+  let existingFolders = parentFolder.getFoldersByName(folderName);
   
   
   // Si la carpeta "contratos" ya existe, devolver el ID de esa carpeta
   if (existingFolders.hasNext()) {
-    var existingFolder = existingFolders.next();
-    var existingFolderId = existingFolder.getId();
+    let existingFolder = existingFolders.next();
+    let existingFolderId = existingFolder.getId();
     Logger.log("Carpeta 'contratos' encontrada. ID: " + existingFolderId);
     return existingFolderId;
   }
   
   // Si la carpeta "contratos" no existe, crear una nueva y devolver el ID de la carpeta recién creada
-  var newFolder = parentFolder.createFolder(folderName);
-  var newFolderId = newFolder.getId();
+  let newFolder = parentFolder.createFolder(folderName);
+  let newFolderId = newFolder.getId();
   Logger.log("Nueva carpeta 'contratos' creada. ID: " + newFolderId);
   return newFolderId;
 
 }
 
 function trasladarArchivo(idCarpetaDestino, urlArchivo, nuevoNombre) {
-  var carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
-  var archivo = DriveApp.getFileById(getIdFromUrl(urlArchivo));
+  let carpetaDestino = DriveApp.getFolderById(idCarpetaDestino);
+  let archivo = DriveApp.getFileById(getIdFromUrl(urlArchivo));
   
-  var copiaArchivo = archivo.makeCopy(nuevoNombre, carpetaDestino);
+  let copiaArchivo = archivo.makeCopy(nuevoNombre, carpetaDestino);
   
   // Opcional: Eliminar el archivo de su ubicación original
   archivo.setTrashed(true);
   
-  var nuevaUrl = copiaArchivo.getUrl();
+  let nuevaUrl = copiaArchivo.getUrl();
   
   return nuevaUrl;
 }
 
 // Función auxiliar para extraer el ID de un enlace de Google Drive
 function getIdFromUrl(url) {
-  var id = "";
-  var match = url.match(/[-\w]{25,}/);
+  let id = "";
+  let match = url.match(/[-\w]{25,}/);
   if (match) {
     id = match[0];
   }

@@ -4,12 +4,12 @@ function sieteEstandares() {
   const sheetCotizaciones = SServicio.getSheetByName(servicio);
   const lastRowCot = sheetCotizaciones.getLastRow();
   const lastColumnCot = sheetCotizaciones.getLastColumn();
-  var slide = slideSevenStanId;
+  //let slide = slideSevenStanId;
   
    
   
-  var tarifaBasica = 1300000;
-  var total = tarifaBasica;
+  let tarifaBasica = 1300000;
+  let total = tarifaBasica;
 
   //Setear valores
   
@@ -34,52 +34,52 @@ function sieteEstandares() {
   addRowNumber(SServicio,servicio,3);
   
   
-  var carpeta = crearCarpetaCot("SG-SST-7-ES")
-  var folderCotId = carpeta.id;
-  var folderCotUrl = carpeta.url;
+  let carpeta = crearCarpetaCot("SG-SST-7-ES")
+  let folderCotId = carpeta.id;
+  let folderCotUrl = carpeta.url;
   sheetCotizaciones.getRange(lastRowCot+1,6).setValue(folderCotUrl);   
   
   //Obtener Actividad Economica
-  var ciiu = sheetDatos.getRange(lastRowDat,16).getValue();
-  var result = obtenerActividad(ciiu);
+  let ciiu = sheetDatos.getRange(lastRowDat,16).getValue();
+  let result = obtenerActividad(ciiu);
 
   
   
   //Identificaciones
-  var slideID = slide;
-  var servi = "SG-SST-7-ES";
-  var ids = getFolderIds(folderCotId);  
-  var pdfID = ids.pdf;
-  var temporal = ids.doc;
+  //let slideID = slide;
+  let servi = "SG-SST-7-ES";
+  let ids = getFolderIds(folderCotId);  
+  let pdfID = ids.pdf;
+  let temporal = ids.doc;
 
   
   //Conexiones
-  var slide = SlidesApp.openById(slide);
-  var archivoslide = DriveApp.getFileById(slideID);
-  var carpetaPDF = DriveApp.getFolderById(pdfID);
-  var carpetaTemporal = DriveApp.getFolderById(temporal);
+  //let TemplateSlide = SlidesApp.openById(slideSevenStanId);
+  let archivoslide = DriveApp.getFileById(slideSevenStanId);
+  let carpetaPDF = DriveApp.getFolderById(pdfID);
+  let carpetaTemporal = DriveApp.getFolderById(temporal);
       
   //Datos Cotizacion.
-  var resConsecutivo = sheetCotizaciones.getRange(lastRowCot+1, 3).getValue();
-  var valor = sheetCotizaciones.getRange(lastRowCot+1,5).getValue();
-  var pesos = formatoColombiano(valor);
+  let resConsecutivo = sheetCotizaciones.getRange(lastRowCot+1, 3).getValue();
+  let valor = sheetCotizaciones.getRange(lastRowCot+1,5).getValue();
+  let pesos = formatoColombiano(valor);
       
-  var valorletras = numeroALetras(valor, {
+  let valorletras = numeroALetras(valor, {
   plural: "PESOS",
   singular: "PESO",
   centPlural: "CENTAVOS",
   centSingular: "CENTAVO"
   });
 
-  var copiaArchivoslide = archivoslide.makeCopy(carpetaTemporal);
-  var copiaID = copiaArchivoslide.getId();
-  var nombreDoc = "CO-"+servi+"-"+resConsecutivo+"-"+yyyy+" "+razonSocial+" NIT "+nit;
-  var archivo = DriveApp.getFileById(copiaID)
+  let copiaArchivoslide = archivoslide.makeCopy(carpetaTemporal);
+  let copiaID = copiaArchivoslide.getId();
+  let nombreDoc = "CO-"+servi+"-"+resConsecutivo+"-"+yyyy+" "+razonSocial+" NIT "+nit;
+  let archivo = DriveApp.getFileById(copiaID)
   archivo.setName(nombreDoc);
-  var slide = SlidesApp.openById(copiaID);
-  var slideLink = slide.getUrl();
+  let slide = SlidesApp.openById(copiaID);
+  let slideLink = slide.getUrl();
 
-  var presentacion= SlidesApp.openById(copiaID)
+  let presentacion= SlidesApp.openById(copiaID)
   presentacion.replaceAllText("{{fecha}}", today)
   presentacion.replaceAllText("{{anio}}", yyyy)
   presentacion.replaceAllText("{{servicio}}", servicio)
@@ -102,12 +102,12 @@ function sieteEstandares() {
   //Datos del cliente y respuestas del form
 
   
-  var prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
+  let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
   sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
 
-  var dataClient = htmlData(SSmaestroCot,"Datos",2,23);
-  var dataValue = htmlData(SServicio,servicio,3,6);
-  var dataToSend = result+dataClient+dataValue;
+  let dataClient = htmlData(SSmaestroCot,"Datos",2,23);
+  let dataValue = htmlData(SServicio,servicio,3,6);
+  let dataToSend = result+dataClient+dataValue;
 
   sendEmail(nombreDoc,slideLink,dataToSend) 
 

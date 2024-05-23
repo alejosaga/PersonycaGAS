@@ -1,4 +1,4 @@
-async function activarCliente() {
+async function actiletCliente() {
     let ssmasterContractApprove = SpreadsheetApp.openById(contractApproveId);
     let sheetAprContr = ssmasterContractApprove.getSheetByName("Datos");
     let lastRowContApr = sheetAprContr.getLastRow();
@@ -7,7 +7,7 @@ async function activarCliente() {
     
     
     
-    var parts = contrato.split("-");
+    let parts = contrato.split("-");
 
     
     
@@ -21,41 +21,41 @@ async function activarCliente() {
     //let email1 = 'autopesonyca@gmail.com';
     let email2 = 'autopesonyca@gmail.com';
     
-    var servicio = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Servicios de interes")
+    let service = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Servicios de interes")
   
     //2.Agregar fecha de inicio del contrato en la columna 7
-      var fecIni = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","Fecha de inicio");
+      let fecIni = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","Fecha de inicio");
       sheetAprContr.getRange(lastRowContApr,7).setValue(fecIni);
   
     //3.Buscar contrato en la carpeta del Cliente en "Prospectos".
   
-      var folderId = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","clientFolderId");
-      var servicio = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Servicios de interes");
-      sheetAprContr.getRange(lastRowContApr,10).setValue(servicio);
+      let folderId = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","clientFolderId");
+      
+      sheetAprContr.getRange(lastRowContApr,10).setValue(service);
   
     //4.Convertir Contrato a PDF y dejarlo en la carpeta del cliente prospecto.
   
-      var contratoUrl = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","urlContrato");
-      var contractFolderId = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","Carpeta Contratos");
-      var contratoId = getIdFromUrl(contratoUrl);
-      var archivoPDFId = convertirDocAPDF(contratoId, contractFolderId);  
+      let contratoUrl = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","urlContrato");
+      let contractFolderId = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","Carpeta Contratos");
+      let contratoId = getIdFromUrl(contratoUrl);
+      let archivoPDFId = convertirDocAPDF(contratoId, contractFolderId);  
   
      //5.Trasladar carpeta del cliente desde "Prospectos" a "Activos".
   
-      var newfolderId = trasladarCarpeta(folderId, folderClienteActivoId);
+      let newfolderId = trasladarCarpeta(folderId, folderClienteActivoId);
       sheetAprContr.getRange(lastRowContApr,8).setValue(newfolderId);
   
   
     //6.Enviar contrato firmado por Personyca al Cliente mediante Email.
 
-      var email = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Dirección de correo electrónico");
-      var subject = " Contrato adjunto - Confirmar recepción y firma: " + contrato;
-      var archivoAdjunto = DriveApp.getFileById(archivoPDFId);
+      let email = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Dirección de correo electrónico");
+      let subject = " Contrato adjunto - Confirmar recepción y firma: " + contrato;
+      let archivoAdjunto = DriveApp.getFileById(archivoPDFId);
       //sendEmail(subject,toClient,email,archivoAdjunto)
       let nombreCliente = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Nombres y apellidos de la persona contacto")
       let dataToSend = '<p>Estimado(a),</p> <strong>'+ nombreCliente +'</strong>,</p><p>Adjunto encontrará el contrato: ' +contrato+ ' que hemos preparado para usted. Por favor, revise el contrato detenidamente y, si está de acuerdo con los términos, le agradeceríamos que lo firmara y nos lo devolviera por correo electrónico.</p><p>Si tiene alguna pregunta o inquietud con respecto al contrato, no dude en comunicarse con nosotros. Estaremos encantados de brindarle cualquier aclaración adicional que necesite.</p><p>Una vez recibido el contrato firmado, procederemos de inmediato con los trámites necesarios para avanzar en el proceso. Esperamos con entusiasmo comenzar esta relación de trabajo y colaborar juntos.</p><p>Adjunto encontrará el contrato firmado en formato PDF. Si prefiere recibirlo en otro formato o necesita asistencia adicional, por favor háganoslo saber.</p><p>Agradecemos su atención y cooperación en este asunto. Quedamos a su disposición para cualquier consulta adicional.</p><p>Saludos cordiales,</p><p>Nancy Camacho<br>Gerente<br>Personyca SAS<br>gerenciapersonyca@gmail.com<br>3165549102</p>'; 
 
-      var body = dataToSend;
+      let body = dataToSend;
       MailApp.sendEmail({
           to: email,
           cc: email2,
@@ -70,7 +70,7 @@ async function activarCliente() {
         
     // Obtener el ID del espacio, ya sea existente o creado
     
-    //var space1= getSpaceId(nombreRazonSocial) 
+    //let space1= getSpaceId(nombreRazonSocial) 
     //console(space1)
 
   

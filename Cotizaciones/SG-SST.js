@@ -4,30 +4,30 @@ function sgSst() {
   const sheetCotizaciones = SServicio.getSheetByName(servicio);
   const lastRowCot = sheetCotizaciones.getLastRow();
   const lastColumnCot = sheetCotizaciones.getLastColumn()
-  var plantilla = slideSgsstId
+  //let plantilla = slideSgsstId
       
-  var tarifaBasica = tarifas[1][6]
-  var costosOperativos = tarifas[2][6];
-  var marketingSst = tarifas[3][6];
-  var vlrMant = 1000000
+  let tarifaBasica = tarifas[1][6]
+  let costosOperativos = tarifas[2][6];
+  let marketingSst = tarifas[3][6];
+  let vlrMant = 1000000
      
-  var caracteristicas = [];
+  let caracteristicas = [];
 
-  var vlrEstandares = servicio+"estandares"+ sheetDatos.getRange(lastRowDat,19).getValue();
-  var vlrrepAuto = servicio+"reporteAutoevaluacion"+ sheetDatos.getRange(lastRowDat,20).getValue();
-  var vlrNumTra = servicio+"numeroTrabajadores"+ numEmp;
-  var vlrNumCon = servicio+"numeroContratistas"+ numCon
-  var vlrVehi = servicio+"vehiculos";
-  var datVehi = sheetDatos.getRange(lastRowDat,21).getValue();
-  var vlrCentros = servicio+"centros";
-  var vlrAltRies = servicio+"altoRiesgo";
-  var datAltRies = sheetDatos.getRange(lastRowDat,22).getValue();
-  var datAltRiesSplited = datAltRies.split(",").length;
-  var vlrEnf = servicio+"enfermedades";
-  var datEnf = sheetDatos.getRange(lastRowDat,24).getValue();
-  var vlrAc = servicio+"accidentes";
-  var datAc = sheetDatos.getRange(lastRowDat,25).getValue();
-  var vlrNivRies = servicio+"nivelRiesgo"+ claseRiesgo;
+  let vlrEstandares = servicio+"estandares"+ sheetDatos.getRange(lastRowDat,19).getValue();
+  let vlrrepAuto = servicio+"reporteAutoevaluacion"+ sheetDatos.getRange(lastRowDat,20).getValue();
+  let vlrNumTra = servicio+"numeroTrabajadores"+ numEmp;
+  let vlrNumCon = servicio+"numeroContratistas"+ numCon
+  let vlrVehi = servicio+"vehiculos";
+  let datVehi = sheetDatos.getRange(lastRowDat,21).getValue();
+  let vlrCentros = servicio+"centros";
+  let vlrAltRies = servicio+"altoRiesgo";
+  let datAltRies = sheetDatos.getRange(lastRowDat,22).getValue();
+  let datAltRiesSplited = datAltRies.split(",").length;
+  let vlrEnf = servicio+"enfermedades";
+  let datEnf = sheetDatos.getRange(lastRowDat,24).getValue();
+  let vlrAc = servicio+"accidentes";
+  let datAc = sheetDatos.getRange(lastRowDat,25).getValue();
+  let vlrNivRies = servicio+"nivelRiesgo"+ claseRiesgo;
 
   caracteristicas.push(vlrEstandares);
   caracteristicas.push(vlrrepAuto);
@@ -42,32 +42,32 @@ function sgSst() {
 
 
 
-  var valoresEncontrados = buscarTarifas(caracteristicas); 
+  let valoresEncontrados = buscarTarifas(caracteristicas); 
 
   
   
-  var estandares = valoresEncontrados[0]* tarifaBasica;
-  var reporteAutoevaluacion = valoresEncontrados[1]* tarifaBasica;
-  var numeroTrabajadores = valoresEncontrados[2]* tarifaBasica;
-  var numeroContratistas = valoresEncontrados[3]* tarifaBasica;
-  var vehiculos = valoresEncontrados[4]*datVehi* tarifaBasica;
-  var centros = valoresEncontrados[5]*datCent* tarifaBasica;
+  let estandares = valoresEncontrados[0]* tarifaBasica;
+  let reporteAutoevaluacion = valoresEncontrados[1]* tarifaBasica;
+  let numeroTrabajadores = valoresEncontrados[2]* tarifaBasica;
+  let numeroContratistas = valoresEncontrados[3]* tarifaBasica;
+  let vehiculos = valoresEncontrados[4]*datVehi* tarifaBasica;
+  let centros = valoresEncontrados[5]*datCent* tarifaBasica;
   
   if(datAltRies=="Ninguno de los anteriores"){
-    var altoRiesgo = 0
+    let altoRiesgo = 0
   }
   else{
-    var altoRiesgo = valoresEncontrados[6]*datAltRiesSplited* tarifaBasica
+    let altoRiesgo = valoresEncontrados[6]*datAltRiesSplited* tarifaBasica
 
   }
   ;
-  var enfermedades = valoresEncontrados[7]*datEnf*datEnf* tarifaBasica;
-  var accidentes = valoresEncontrados[8]*datAc* tarifaBasica;
-  var nivelRiesgo = valoresEncontrados[9]* tarifaBasica;
+  let enfermedades = valoresEncontrados[7]*datEnf*datEnf* tarifaBasica;
+  let accidentes = valoresEncontrados[8]*datAc* tarifaBasica;
+  let nivelRiesgo = valoresEncontrados[9]* tarifaBasica;
 
   
   
-  var total = tarifaBasica+estandares+reporteAutoevaluacion+numeroTrabajadores+numeroContratistas+vehiculos+centros+altoRiesgo+enfermedades+accidentes+nivelRiesgo+costosOperativos+marketingSst;
+  let total = tarifaBasica+estandares+reporteAutoevaluacion+numeroTrabajadores+numeroContratistas+vehiculos+centros+altoRiesgo+enfermedades+accidentes+nivelRiesgo+costosOperativos+marketingSst;
 
 
   //Setear valores
@@ -93,64 +93,64 @@ function sgSst() {
 
   addRowNumber(SServicio,servicio,3);
   /*
-  var prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot);
+  let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot);
   sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
   */
 
-  var carpeta = crearCarpetaCot("SG-SST")
-  var folderCotId = carpeta.id;
-  var folderCotUrl = carpeta.url;
+  let carpeta = crearCarpetaCot("SG-SST")
+  let folderCotId = carpeta.id;
+  let folderCotUrl = carpeta.url;
   sheetCotizaciones.getRange(lastRowCot+1,6).setValue(folderCotUrl);   
   
   //Obtener Actividad Economica
-  var ciiu = sheetDatos.getRange(lastRowDat,16).getValue();
-  var result = obtenerActividad(ciiu);
+  let ciiu = sheetDatos.getRange(lastRowDat,16).getValue();
+  let result = obtenerActividad(ciiu);
 
   
 
   //Identificaciones
-  var plantillaID = plantilla;
-  var servi = "SG-SST";
-  var ids = getFolderIds(folderCotId);  
-  var pdfID = ids.pdf;
-  var temporal = ids.doc;
+  //let plantillaID = plantilla;
+  let servi = "SG-SST";
+  let ids = getFolderIds(folderCotId);  
+  let pdfID = ids.pdf;
+  let temporal = ids.doc;
 
   
   //Conexiones
-  var slide = SlidesApp.openById(plantilla);
-  var archivoPlantilla = DriveApp.getFileById(plantillaID);
-  var carpetaPDF = DriveApp.getFolderById(pdfID);
-  var carpetaTemporal = DriveApp.getFolderById(temporal);
+  //let slide = SlidesApp.openById(plantilla);
+  let archivoPlantilla = DriveApp.getFileById(slideSgsstId);
+  let carpetaPDF = DriveApp.getFolderById(pdfID);
+  let carpetaTemporal = DriveApp.getFolderById(temporal);
       
   //Datos Cotizacion.
-  var resConsecutivo = sheetCotizaciones.getRange(lastRowCot+1, 3).getValue();
-  var valor = sheetCotizaciones.getRange(lastRowCot+1,5).getValue();
-  var pesos = formatoColombiano(valor);
-  var pesosMant = formatoColombiano(vlrMant);
+  let resConsecutivo = sheetCotizaciones.getRange(lastRowCot+1, 3).getValue();
+  let valor = sheetCotizaciones.getRange(lastRowCot+1,5).getValue();
+  let pesos = formatoColombiano(valor);
+  let pesosMant = formatoColombiano(vlrMant);
     
-  var valorletras = numeroALetras(valor, {
+  let valorletras = numeroALetras(valor, {
   plural: "PESOS",
   singular: "PESO",
   centPlural: "CENTAVOS",
   centSingular: "CENTAVO"
   });
 
-  var mantLetras = numeroALetras(vlrMant, {
+  let mantLetras = numeroALetras(vlrMant, {
   plural: "PESOS",
   singular: "PESO",
   centPlural: "CENTAVOS",
   centSingular: "CENTAVO"
   });
  
-  var copiaArchivoPlantilla = archivoPlantilla.makeCopy(carpetaTemporal);
-  var copiaID = copiaArchivoPlantilla.getId();
-  var nombreDoc = "CO-"+servi+"-"+resConsecutivo+"-"+yyyy+" "+razonSocial+" NIT "+nit;
-  var archivo = DriveApp.getFileById(copiaID)
+  let copiaArchivoPlantilla = archivoPlantilla.makeCopy(carpetaTemporal);
+  let copiaID = copiaArchivoPlantilla.getId();
+  let nombreDoc = "CO-"+servi+"-"+resConsecutivo+"-"+yyyy+" "+razonSocial+" NIT "+nit;
+  let archivo = DriveApp.getFileById(copiaID)
   archivo.setName(nombreDoc);
-  var slide = SlidesApp.openById(copiaID);
-  var slideLink = slide.getUrl();
+  let slide = SlidesApp.openById(copiaID);
+  let slideLink = slide.getUrl();
 
-  var presentacion= SlidesApp.openById(copiaID)
+  let presentacion= SlidesApp.openById(copiaID)
   presentacion.replaceAllText("{{fecha}}", today)
   presentacion.replaceAllText("{{anio}}", yyyy)
   presentacion.replaceAllText("{{servicio}}", servicio)
@@ -175,12 +175,12 @@ function sgSst() {
  
    //Datos del cliente y respuestas del form
 
-  var prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
+  let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
   sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
 
-  var dataClient = htmlData(SSmaestroCot,"Datos",2,23);
-  var dataValue = htmlData(SServicio,servicio,3,18);
-  var dataToSend = result+dataClient+dataValue;
+  let dataClient = htmlData(SSmaestroCot,"Datos",2,23);
+  let dataValue = htmlData(SServicio,servicio,3,18);
+  let dataToSend = result+dataClient+dataValue;
 
 
   sendEmail(nombreDoc,slideLink,dataToSend) 

@@ -3,62 +3,77 @@
 
 //STG
 // Id's hojas de calculo
-var maestroCotId = '1ONjXHvsob4GxwJ5we8CCkOUd-3UhHpEqr6ZO4jMDROs'; //Maestro Cotizaciones
-var batPsiServiceId = '118B0YZH-YJYXKZZiRR99hC_GGKEif-Ij9NcyeAiND_aU';
-var sevenStandarServiceId = '1CkG2KZlhcRSdmEHhQkZ35tj_SKsVwsnL5nAmGmHKz28';
-var sgsstServiceId = '1CkG2KZlhcRSdmEHhQkZ35tj_SKsVwsnL5nAmGmHKz28'
-var cotApproveId = '1r_nqfSmaCWNtPm3h_Tw9ZtXCXWsFos1Tj_wqx44jAaU'
-var contractmaestroId = '1lJkAZkWm_8xLGO7VYngLHqAast85LAcxqgOf6U0Z5JU'
-var contractApproveId = '1PtEMS56XEFPGTiFHlh7xgJq_K1L8I4Rsgtax9G6rwwU'
+let maestroCotId = '1ONjXHvsob4GxwJ5we8CCkOUd-3UhHpEqr6ZO4jMDROs'; // Maestro Cotizaciones
+let batPsiServiceId = '18B0YZH-YJYXKZZiRR99hC_GGKEif-Ij9NcyeAiND_aU';
+let sevenStandarServiceId = '1CkG2KZlhcRSdmEHhQkZ35tj_SKsVwsnL5nAmGmHKz28';
+let sgsstServiceId = '1CkG2KZlhcRSdmEHhQkZ35tj_SKsVwsnL5nAmGmHKz28';
+let cotApproveId = '1r_nqfSmaCWNtPm3h_Tw9ZtXCXWsFos1Tj_wqx44jAaU';
+let contractmaestroId = '1lJkAZkWm_8xLGO7VYngLHqAast85LAcxqgOf6U0Z5JU';
+let contractApproveId = '1PtEMS56XEFPGTiFHlh7xgJq_K1L8I4Rsgtax9G6rwwU';
 
+//Plantillas
+let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
+let slideSevenStanId = "1Hx5R0CPuA85A8ThQJijn8-j9oc2qyB7OPFlsL9FT52s"
+let slideSgsstId = "1QsXMBN4IznmhdsEO_iL1cajdmj3J5dWFF3Lm5KUXrpQ"
+let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag"
+let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4"
+let contratoPSI = "1w8YIKpGm2TDWN0G2S4OH7DJ9F9uJMkAUxypw0ee1TsM";
 
 //folders
-var carpetaRaizId = "1eIfr2gmnZKvqHFdm2QJMWL--mYbZlUs0"
-var folderClienteActivoId = "1qnnpJItHT5q4W2XcM2aPEHtIgfD64CeR"
+let carpetaRaizId = "1eIfr2gmnZKvqHFdm2QJMWL--mYbZlUs0"
+let folderClienteActivoId = "1qnnpJItHT5q4W2XcM2aPEHtIgfD64CeR"
 
 //email's
-var personycaEmail = "autopersonyca@gmail.com"
-var personycaEmail2 = "bitsaga2804@gmail.com"
+let personycaEmail1 = "autopersonyca@gmail.com"
+let personycaEmail2 = "bitsaga2804@gmail.com"
 
 //Prefilled forms
 
-var approveCotForm = "1FAIpQLSf_ZTWb79JDUbWMtXng8Lnog0Jwod7oxAP2U4nNSIfEQwSs6g";
-var clientAcceptForm = "1FAIpQLSebS5fS5oB9tXnns6OdM6r8RnkC9PzYiU-CoptypDl-mhldPg";
-var approveContractForm = "1FAIpQLScnKWRXGB7XND1zK7msYKoLYEqP1eL-LK7zKEjjW9IFnbMw7A";
+let approveCotForm = "1FAIpQLSf_ZTWb79JDUbWMtXng8Lnog0Jwod7oxAP2U4nNSIfEQwSs6g";
+let clientAcceptForm = "1FAIpQLSebS5fS5oB9tXnns6OdM6r8RnkC9PzYiU-CoptypDl-mhldPg";
+let approveContractForm = "1FAIpQLScnKWRXGB7XND1zK7msYKoLYEqP1eL-LK7zKEjjW9IFnbMw7A";
 
 //click-Up
-var API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
-var TEAM_ID = '9017178102'; // Reemplaza con el ID de tu equipo en ClickUp
+let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
+let TEAM_ID = '9017178102'; // Reemplaza con el ID de tu equipo en ClickUp
 
 
 /*
 //Prod
 // Id's hojas de calculo
-var maestroCotId = '1NjFoSgX2ig2a6lGc6HDY5YAUXLS6FoNxaSruIMx-gpk'; //Maestro Cotizaciones
-var batPsiServiceId = '1TcvBgxXzKeUdhy4BVvS1CccXPp1e5UNJAFF4dLFZ6jk';
-var sevenStandarServiceId = '1PTTA9CJO6A7fSoQhW73d07nOJGy9R27oagMVENlCeTc';
-var sgsstServiceId = '1PTTA9CJO6A7fSoQhW73d07nOJGy9R27oagMVENlCeTc'
-var cotApproveId = '1UVGSS6cC9G1gv2zEzWqA-0C3jHMBt_9EgDW_1FnBtjE'
-var contractmaestroId = '1O1OV5qWXqEMv3ZnQo0D3Fd9YAfirA_McnTyImxzztoc'
-var contractApproveId = ''
+let maestroCotId = '1NjFoSgX2ig2a6lGc6HDY5YAUXLS6FoNxaSruIMx-gpk'; //Maestro Cotizaciones
+let batPsiServiceId = '1TcvBgxXzKeUdhy4BVvS1CccXPp1e5UNJAFF4dLFZ6jk';
+let sevenStandarServiceId = '1PTTA9CJO6A7fSoQhW73d07nOJGy9R27oagMVENlCeTc';
+let sgsstServiceId = '1PTTA9CJO6A7fSoQhW73d07nOJGy9R27oagMVENlCeTc'
+let cotApproveId = '1UVGSS6cC9G1gv2zEzWqA-0C3jHMBt_9EgDW_1FnBtjE'
+let contractmaestroId = '1O1OV5qWXqEMv3ZnQo0D3Fd9YAfirA_McnTyImxzztoc'
+let contractApproveId = ''
+
+//Plantillas
+let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
+let slideSevenStanId = "1Hx5R0CPuA85A8ThQJijn8-j9oc2qyB7OPFlsL9FT52s"
+let slideSgsstId = "1QsXMBN4IznmhdsEO_iL1cajdmj3J5dWFF3Lm5KUXrpQ"
+let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag"
+let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4"
+let contratoPSI = "1w8YIKpGm2TDWN0G2S4OH7DJ9F9uJMkAUxypw0ee1TsM";
 
 
 //folders
-var carpetaRaizId = "19N9AckZiLRZBdDtN1PWT7ZlgpRVENNuv"
-var folderClienteActivoId = ""
+let carpetaRaizId = "19N9AckZiLRZBdDtN1PWT7ZlgpRVENNuv"
+let folderClienteActivoId = ""
 
 //email's
-var personycaEmail = "autopersonyca@gmail.com"
-var personycaEmail2 = "autopersonyca@gmail.com"
+let personycaEmail = "autopersonyca@gmail.com"
+let personycaEmail2 = "autopersonyca@gmail.com"
 
 //Prefilled forms
 
-var approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w";
-var clientAcceptForm = "1FAIpQLSfj5LY8b1dnCRnGjrz4lQQ0eu_FUk5RPB5lL6XzO6wJ0O7k2w";
-var approveContractForm = "";
+let approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w";
+let clientAcceptForm = "1FAIpQLSfj5LY8b1dnCRnGjrz4lQQ0eu_FUk5RPB5lL6XzO6wJ0O7k2w";
+let approveContractForm = "";
 
 //click-Up
-var API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
-var TEAM_ID = '9013247276'; // Reemplaza con el ID de tu equipo en ClickUp
+let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
+let TEAM_ID = '9013247276'; // Reemplaza con el ID de tu equipo en ClickUp
 
 */
