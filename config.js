@@ -46,8 +46,8 @@ let batPsiServiceId = '1TcvBgxXzKeUdhy4BVvS1CccXPp1e5UNJAFF4dLFZ6jk';
 let sevenStandarServiceId = '1PTTA9CJO6A7fSoQhW73d07nOJGy9R27oagMVENlCeTc';
 let sgsstServiceId = '1PTTA9CJO6A7fSoQhW73d07nOJGy9R27oagMVENlCeTc'
 let cotApproveId = '1UVGSS6cC9G1gv2zEzWqA-0C3jHMBt_9EgDW_1FnBtjE'
-let contractmaestroId = '1O1OV5qWXqEMv3ZnQo0D3Fd9YAfirA_McnTyImxzztoc'
-let contractApproveId = ''
+let contractmaestroId = '1oWWmOdYWS-79tMesefHVrNU_aw42xdA0BsuDIoE2aEc'
+let contractApproveId = '1GxIDj0f9OG2QUD5T8WZjIdkbdd6FRxdLN890cuz2gw4'
 
 //Plantillas
 let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
@@ -60,17 +60,17 @@ let contratoPSI = "1w8YIKpGm2TDWN0G2S4OH7DJ9F9uJMkAUxypw0ee1TsM";
 
 //folders
 let carpetaRaizId = "19N9AckZiLRZBdDtN1PWT7ZlgpRVENNuv"
-let folderClienteActivoId = ""
+let folderClienteActivoId = "1t5je_VRW02cPw5oQeEdL0PQZJMmPeByd"
 
 //email's
-let personycaEmail = "autopersonyca@gmail.com"
+let personycaEmail = "personycasas@gmail.com"
 let personycaEmail2 = "autopersonyca@gmail.com"
 
 //Prefilled forms
 
-let approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w";
-let clientAcceptForm = "1FAIpQLSfj5LY8b1dnCRnGjrz4lQQ0eu_FUk5RPB5lL6XzO6wJ0O7k2w";
-let approveContractForm = "";
+let approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w"; 
+let clientAcceptForm = "1FAIpQLSeP0HTc6a7hmvG6SF8Slyr67rTTwkslnrPVWaJGGeHqEqAr4Q";
+let approveContractForm = "1FAIpQLSfZp-jFfZ7cZBTieQNGC3XZbQYfOt6XBsvWS0-3VfXm0A8uew";
 
 //click-Up
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
