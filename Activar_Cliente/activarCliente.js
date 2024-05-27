@@ -15,33 +15,33 @@ async function activarCliente() {
     
     
     let service = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Servicios de interes")
-  
-    //2.Agregar fecha de inicio del contrato en la columna 7
+  /*
+    //1.Agregar fecha de inicio del contrato en la columna 7
       let fecIni = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","Fecha de inicio");
       sheetAprContr.getRange(lastRowContApr,7).setValue(fecIni);
   
-    //3.Buscar contrato en la carpeta del Cliente en "Prospectos".
+    //2.Buscar contrato en la carpeta del Cliente en "Prospectos".
   
       let folderId = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","clientFolderId");
       
       sheetAprContr.getRange(lastRowContApr,10).setValue(service);
   
-    //4.Convertir Contrato a PDF y dejarlo en la carpeta del cliente prospecto.
+    //3.Convertir Contrato a PDF y dejarlo en la carpeta del cliente prospecto.
   
       let contratoUrl = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","urlContrato");
       let contractFolderId = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","Carpeta Contratos");
       let contratoId = getIdFromUrl(contratoUrl);
       let archivoPDFId = convertirDocAPDF(contratoId, contractFolderId);  
   
-     //5.Trasladar carpeta del cliente desde "Prospectos" a "Activos".
+     //4.Trasladar carpeta del cliente desde "Prospectos" a "Activos".
   
       let newfolderId = trasladarCarpeta(folderId, folderClienteActivoId);
       sheetAprContr.getRange(lastRowContApr,8).setValue(newfolderId);
   
   
-    //6.Enviar contrato firmado por Personyca al Cliente mediante Email.
+    //5.Enviar contrato firmado por Personyca al Cliente mediante Email.
 
-      let email = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Dirección de correo electrónico");
+      
       let subject = " Contrato adjunto - Confirmar recepción y firma: " + contrato;
       let archivoAdjunto = DriveApp.getFileById(archivoPDFId);
       //sendEmail(subject,toClient,email,archivoAdjunto)
@@ -57,29 +57,19 @@ async function activarCliente() {
           attachments: [archivoAdjunto.getAs(MimeType.PDF)]
         }); 
 
-    //1.Crear espacio carpeta y lista en clickUp
-    main(nombreRazonSocial, sheetAprContr, lastRowContApr, contrato);
-    
-        
-    // Obtener el ID del espacio, ya sea existente o creado
-    
-    //let space1= getSpaceId(nombreRazonSocial) 
-    //console(space1)
-
+    //6.Crear espacio carpeta y lista en clickUp
+      let listId = main(nombreRazonSocial, sheetAprContr, lastRowContApr, contrato);
+      sheetAprContr.getRange(lastRowContApr, 11).setValue(listId)  
   
+    //7.Crear lista de tareas de acuerdo a plantilla en Sheets.
 
-     
-    //createFolder(espacio, contrato);
-
-
-
-    // Manejar el resultado
-   
     
-  
-      
-  
-    //7.Guardar el plan de trabajo en carpeta del Cliente en caso de que se cree mediante Sheets.
+*/
+
+let lista = sheetAprContr.getRange(lastRowContApr, 11).getValue();
+crearTareasEnClickUp(lista)
+
+
     //8.Enviar Email a gerente de Personyca y consultores vinculados al proyecto, informando sobre la activacion del cliente, la ubicacion y nombre del plan de trabajo.
     //9.Enviar Email a Contabilidad informando sobre la activacion del nuevo cliente, la documentacion legal correspondiente y la informacion sobre facturacion.
     

@@ -18,7 +18,9 @@ let slideSgsstId = "1QsXMBN4IznmhdsEO_iL1cajdmj3J5dWFF3Lm5KUXrpQ"
 let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag"
 let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4"
 let contratoPSI = "1w8YIKpGm2TDWN0G2S4OH7DJ9F9uJMkAUxypw0ee1TsM";
-
+let tasksSgsst = "1_SrR_bdZJ_6cs7Wc4plClaXr4trbaupXSbtNdPvGmY0";
+let tasks7Standates ="";
+let tasksPSI = "";
 //folders
 let carpetaRaizId = "1eIfr2gmnZKvqHFdm2QJMWL--mYbZlUs0"
 let folderClienteActivoId = "1qnnpJItHT5q4W2XcM2aPEHtIgfD64CeR"
@@ -56,14 +58,16 @@ let slideSgsstId = "1QsXMBN4IznmhdsEO_iL1cajdmj3J5dWFF3Lm5KUXrpQ"
 let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag"
 let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4"
 let contratoPSI = "1w8YIKpGm2TDWN0G2S4OH7DJ9F9uJMkAUxypw0ee1TsM";
-
+let tasksSgsst = "";
+let tasks7Standates ="";
+let tasksPSI = "";
 
 //folders
 let carpetaRaizId = "19N9AckZiLRZBdDtN1PWT7ZlgpRVENNuv"
 let folderClienteActivoId = "1t5je_VRW02cPw5oQeEdL0PQZJMmPeByd"
 
 //email's
-let personycaEmail = "personycasas@gmail.com"
+let personycaEmail1 = "personycasas@gmail.com"
 let personycaEmail2 = "autopersonyca@gmail.com"
 
 //Prefilled forms

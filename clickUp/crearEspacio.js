@@ -2,30 +2,34 @@ function main(spaceName, sheet, row, contrato) {
   try {
     const spaceId = getSpaceId(spaceName);
     if (spaceId) {
-      
       sheet.getRange(row, 9).setValue(spaceId);
       const folderId = createFolder(spaceId, contrato);
-      
+      if (folderId) {
+        const listId = createList(spaceId, folderId, "Mi Lista");
+        console.log(`ID de la lista creada: ${listId}`);
+        return listId;
+      }
     } else {
-      
       const newSpaceId = createSpace(spaceName);
       if (newSpaceId) {
-        
         sheet.getRange(row, 9).setValue(newSpaceId);
         const folderId = createFolder(newSpaceId, contrato);
-        console.log(`ID de la carpeta creada: ${folderId}`);
-      } else {
-        
+        if (folderId) {
+          const listId = createList(newSpaceId, folderId, "Mi Lista");
+          console.log(`ID de la lista creada: ${listId}`);
+          return listId;
+        }
       }
     }
   } catch (error) {
-    
+    console.error('Error en main:', error);
+    return null;
   }
+  return null;
 }
 
 function getSpaceId(spaceName) {
   const url = `https://api.clickup.com/api/v2/team/${TEAM_ID}/space`;
-
   const options = {
     method: 'GET',
     headers: {
@@ -39,14 +43,13 @@ function getSpaceId(spaceName) {
     const space = data.spaces.find(space => space.name === spaceName);
     return space ? space.id : null;
   } catch (error) {
-    
+    console.error('Error en getSpaceId:', error);
     return null;
   }
 }
 
 function createSpace(spaceName) {
   const url = `https://api.clickup.com/api/v2/team/${TEAM_ID}/space`;
-  
   const options = {
     method: 'POST',
     headers: {
@@ -80,21 +83,19 @@ function createSpace(spaceName) {
     const response = UrlFetchApp.fetch(url, options);
     const data = JSON.parse(response.getContentText());
     if (data.id) {
-      
       return data.id;
     } else {
-      
+      console.error('Error en createSpace: No se pudo crear el espacio.');
       return null;
     }
   } catch (error) {
-    
+    console.error('Error en createSpace:', error);
     return null;
   }
 }
 
 function createFolder(spaceId, folderName) {
   const url = `https://api.clickup.com/api/v2/space/${spaceId}/folder`;
-
   const options = {
     method: 'POST',
     contentType: 'application/json',
@@ -110,28 +111,21 @@ function createFolder(spaceId, folderName) {
   try {
     const response = UrlFetchApp.fetch(url, options);
     const content = response.getContentText();
-    
     const data = JSON.parse(content);
-
     if (data.id) {
-      
-      
-      // Creamos la lista dentro de la carpeta
-      const listId = createList(spaceId, data.id, "Mi Lista");
-
       return data.id;
     } else {
-      
+      console.error('Error en createFolder: No se pudo crear la carpeta.');
       return null;
     }
   } catch (error) {
-    
+    console.error('Error en createFolder:', error);
     return null;
   }
 }
+
 function createList(spaceId, folderId, listName) {
   const url = `https://api.clickup.com/api/v2/folder/${folderId}/list`;
-
   const options = {
     method: 'POST',
     contentType: 'application/json',
@@ -147,18 +141,15 @@ function createList(spaceId, folderId, listName) {
   try {
     const response = UrlFetchApp.fetch(url, options);
     const content = response.getContentText();
-    
     const data = JSON.parse(content);
-
     if (data.id) {
-      
       return data.id;
     } else {
-      
+      console.error('Error en createList: No se pudo crear la lista.');
       return null;
     }
   } catch (error) {
-    
+    console.error('Error en createList:', error);
     return null;
   }
 }
