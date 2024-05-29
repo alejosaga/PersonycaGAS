@@ -19,8 +19,8 @@ let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag"
 let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4"
 let contratoPSI = "1w8YIKpGm2TDWN0G2S4OH7DJ9F9uJMkAUxypw0ee1TsM";
 let tasksSgsst = "1_SrR_bdZJ_6cs7Wc4plClaXr4trbaupXSbtNdPvGmY0";
-let tasks7Standates ="";
-let tasksPSI = "";
+let tasks7Standares ="1s-tgpGwICepg9ymioueu4hk7O3mcUjU_XxotHmzT5bc";
+let tasksPSI = "1m5FsZwrHB2tiEC-EZD1iUy1jMGIYYeVrW8EcvTSLmV4";
 //folders
 let carpetaRaizId = "1eIfr2gmnZKvqHFdm2QJMWL--mYbZlUs0"
 let folderClienteActivoId = "1qnnpJItHT5q4W2XcM2aPEHtIgfD64CeR"

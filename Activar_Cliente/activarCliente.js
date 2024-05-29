@@ -15,7 +15,7 @@ async function activarCliente() {
     
     
     let service = searchValues(maestroCotId,numClien,"Datos","Codigo Cliente","Servicios de interes")
-  /*
+  
     //1.Agregar fecha de inicio del contrato en la columna 7
       let fecIni = searchValues(contractmaestroId,numClien,"Datos","Codigo Cliente","Fecha de inicio");
       sheetAprContr.getRange(lastRowContApr,7).setValue(fecIni);
@@ -63,16 +63,30 @@ async function activarCliente() {
   
     //7.Crear lista de tareas de acuerdo a plantilla en Sheets.
 
-    
-*/
+   
+let taskTemplateId = "";
+
+if (contrato.includes("CO-BAT-PSI-")){
+  taskTemplateId = tasksPSI
+} else if (contrato.includes("CO-SG-SST-7-ES-")) {
+  taskTemplateId = tasks7Standares;
+} else if (contrato.includes("CO-SG-SST-")) {
+  taskTemplateId = tasksSgsst; // Ajustar según el ID correcto para CO-SG-SST-  
+} else {
+  Logger.log('No se encontró un ID válido para el contenido: ' + contrato);
+  ;
+}
+
+
+console.log(taskTemplateId)
 
 let lista = sheetAprContr.getRange(lastRowContApr, 11).getValue();
-crearTareasEnClickUp(lista)
+crearTareasEnClickUp(lista,taskTemplateId)
 
 
     //8.Enviar Email a gerente de Personyca y consultores vinculados al proyecto, informando sobre la activacion del cliente, la ubicacion y nombre del plan de trabajo.
     //9.Enviar Email a Contabilidad informando sobre la activacion del nuevo cliente, la documentacion legal correspondiente y la informacion sobre facturacion.
     
     
-    }
+}
   

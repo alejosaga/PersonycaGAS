@@ -153,7 +153,7 @@ function batPsiRisk() {
     let prefilledForm = preFilledForm(total, sheetCotizaciones, lastRowCot, 21);
     sheetCotizaciones.getRange(lastRowCot + 1, 7).setValue(prefilledForm);
 
-    sheetDatos.getRange(lastRowDat+1,lastColumnDat).setValue(nombreDoc);
+    sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
     let dataClient1 = htmlData(SSmaestroCot, "Datos", 2, 9);
     let dataClient2 = htmlData(SSmaestroCot, "Datos", 26, 5);

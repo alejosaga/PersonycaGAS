@@ -37,7 +37,7 @@ function traerDatos() {
     Logger.log('ssId: ' + ssId);
   
     // Recupera datos Archivo Clientes
-    let servicio = searchValues(maestroCotId, nit, "Datos", "Nit", "Servicios de interes");   
+    let servicio = searchValues(maestroCotId, numCot, "Datos", "cotizacion", "Servicios de interes");   
     let slideName = numCot;
     
     let slideId = searchValues(ssId, slideName, sheetCot, "slideName", "slideId");
@@ -50,7 +50,7 @@ function traerDatos() {
       throw new Error("PDF Folder ID not found for slide name: " + slideName);
     }
   
-    let contactName = searchValues(maestroCotId, nit, "Datos", "Nit", "Nombres y apellidos de la persona contacto");
+    let contactName = searchValues(maestroCotId, numCot, "Datos", "cotizacion", "Nombres y apellidos de la persona contacto");
     if (!contactName) {
       throw new Error("Contact name not found for NIT: " + nit);
     }

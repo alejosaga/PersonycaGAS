@@ -177,7 +177,7 @@ function sgSst() {
    //Datos del cliente y respuestas del form
 
   let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
-  sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
+  sheetCotizaciones.getRange(lastRowCot,7).setValue(prefilledForm);
 
   sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 

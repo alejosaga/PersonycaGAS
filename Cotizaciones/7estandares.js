@@ -99,7 +99,7 @@ function sieteEstandares() {
   sheetCotizaciones.getRange(lastRowCot+1,lastColumnCot-1).setValue(copiaID)
   sheetCotizaciones.getRange(lastRowCot+1,lastColumnCot-2).setValue(pdfID)
 
-  sheetDatos.getRange(lastRowDat+1,lastColumnDat).setValue(nombreDoc);
+  sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
   //Datos del cliente y respuestas del form
 
