@@ -414,7 +414,10 @@ function searchValues(ssId, vlrBuscado, sheetName, colBuscada, colRespuesta) {
 
   Logger.log("No se encontró ningún valor para la condición ingresada");
   return null;
+
 }
+
+
 
 function firstWordToTitleCase(str) {
     let firstWord = str.split(" ")[0];
