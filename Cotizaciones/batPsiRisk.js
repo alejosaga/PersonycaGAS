@@ -155,9 +155,9 @@ function batPsiRisk() {
 
     sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
-    let dataClient1 = htmlData(SSmaestroCot, "Datos", 2, 9);
-    let dataClient2 = htmlData(SSmaestroCot, "Datos", 26, 5);
-    let dataClient3 = htmlData(SSmaestroCot, "Datos", 37, 2);
+    let dataClient1 = htmlData(SSmaestroCot, "Datos", 3, 11);
+    let dataClient2 = htmlData(SSmaestroCot, "Datos", 25, 7);
+    let dataClient3 = htmlData(SSmaestroCot, "Datos", 39, 3);
     let dataValue = htmlData(SServicio, servicio, 3, 16);
     let dataToSend = dataClient1 + dataClient2 + dataClient3 + dataValue;
 
