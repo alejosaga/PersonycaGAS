@@ -10,6 +10,7 @@ let sgsstServiceId = '1CkG2KZlhcRSdmEHhQkZ35tj_SKsVwsnL5nAmGmHKz28';
 let cotApproveId = '1r_nqfSmaCWNtPm3h_Tw9ZtXCXWsFos1Tj_wqx44jAaU';
 let contractmaestroId = '1lJkAZkWm_8xLGO7VYngLHqAast85LAcxqgOf6U0Z5JU';
 let contractApproveId = '1PtEMS56XEFPGTiFHlh7xgJq_K1L8I4Rsgtax9G6rwwU';
+let isoSisGesCotId = 'hDEQLOiKC7GyU1WLtBiV44qfoj1yWxZENgVNET1CF4I'
 
 //Plantillas
 let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";

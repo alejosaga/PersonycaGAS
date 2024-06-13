@@ -20,8 +20,8 @@ function cotizar() {
     case "Programa Etica empresarial":
       //function3();
       break;
-    case "Auditorias":
-      //function3();
+    case "Sistemas de Gestion de Calidad -ISO":
+      cotISO();
       break;
     case "Fortalecimiento Talento Humano":
       //function3();
