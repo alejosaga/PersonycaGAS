@@ -5,7 +5,10 @@ function sgSst() {
   const lastRowCot = sheetCotizaciones.getLastRow();
   const lastColumnCot = sheetCotizaciones.getLastColumn()
   //let plantilla = slideSgsstId
-      
+
+  let datEstandares = searchValues(maestroCotId,nit,"Nit","Dando alcance a la resolución 0312 del 2019 indicanos si tienen estándares mínimos actualmente y en que %");
+  let datRepAuto = searchValues(maestroCotId,nit,"Nit","Tienes reporte de la autoevaluación ante el ministerio de trabajo del año 2019, 2020, 2021,  2022 y 2023");    
+  
   let tarifaBasica = tarifas[1][6]
   let costosOperativos = tarifas[2][6];
   let marketingSst = tarifas[3][6];
@@ -13,20 +16,20 @@ function sgSst() {
      
   let caracteristicas = [];
 
-  let vlrEstandares = servicio+"estandares"+ sheetDatos.getRange(lastRowDat,19).getValue();
-  let vlrrepAuto = servicio+"reporteAutoevaluacion"+ sheetDatos.getRange(lastRowDat,20).getValue();
+  let vlrEstandares = servicio+"estandares"+ datEstandares;
+  let vlrrepAuto = servicio+"reporteAutoevaluacion"+ datRepAuto;
   let vlrNumTra = servicio+"numeroTrabajadores"+ numEmp;
   let vlrNumCon = servicio+"numeroContratistas"+ numCon
   let vlrVehi = servicio+"vehiculos";
-  let datVehi = sheetDatos.getRange(lastRowDat,21).getValue();
+  let datVehi = searchValues(maestroCotId,nit,"Nit","¿Tienen vehiculos? indicanos cuántos (en numeros)");
   let vlrCentros = servicio+"centros";
   let vlrAltRies = servicio+"altoRiesgo";
-  let datAltRies = sheetDatos.getRange(lastRowDat,22).getValue();
+  let datAltRies = searchValues(maestroCotId,nit,"Nit","La empresa realiza trabajos de alto riesgo tales como:*");
   let datAltRiesSplited = datAltRies.split(",").length;
   let vlrEnf = servicio+"enfermedades";
-  let datEnf = sheetDatos.getRange(lastRowDat,24).getValue();
+  let datEnf = searchValues(maestroCotId,nit,"Nit","Indique cuantos casos de trabajadores con alguna enfermedad laboral en trámite tiene la compañia actualmente (0 si ninguno)");
   let vlrAc = servicio+"accidentes";
-  let datAc = sheetDatos.getRange(lastRowDat,25).getValue();
+  let datAc = searchValues(maestroCotId,nit,"Nit","Cuantos casos de trabajadores con accidentes laborales en proceso. (0 si ninguno)")
   let vlrNivRies = servicio+"nivelRiesgo"+ claseRiesgo;
 
   caracteristicas.push(vlrEstandares);
@@ -181,9 +184,10 @@ function sgSst() {
 
   sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
-  let dataClient = htmlData(SSmaestroCot,"Datos",2,23);
+  let dataClient = htmlData(SSmaestroCot,"Datos",2,13);
+  let dataClient1 = htmlData(SSmaestroCot,"Datos",23,10);
   let dataValue = htmlData(SServicio,servicio,3,18);
-  let dataToSend = result+dataClient+dataValue;
+  let dataToSend = result+dataClient+dataClient1+dataValue;
 
 
   sendEmail(nombreDoc,slideLink,dataToSend) 

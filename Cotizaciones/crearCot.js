@@ -21,7 +21,7 @@ function cotizar() {
       //function3();
       break;
     case "Sistemas de Gestion de Calidad -ISO":
-      cotISO();
+      generarCotizacionISO();
       break;
     case "Fortalecimiento Talento Humano":
       //function3();
