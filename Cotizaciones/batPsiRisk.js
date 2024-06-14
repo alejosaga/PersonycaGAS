@@ -20,14 +20,14 @@ function batPsiRisk() {
 
     let costosOperativos = tarifas[38][6] * numTra;
     let marketingSst = tarifas[39][6] * numTra;
-    let traNoLee = sheetDatos.getRange(lastRowDat, 31).getValue();
-
+    let traNoLee = searchValues(maestroCotId,nit,"Nit","La empresa cuenta con trabajadores que no saben leer ni escribir? cuantos?");
+    let datAplicoAntes = searchValues(maestroCotId,nit,"Nit","Se ha aplicado la bateria de riesgo psicosocial antes?");
     console.log('Costos Operativos:', costosOperativos);
     console.log('Marketing SST:', marketingSst);
     console.log('Tra No Lee:', traNoLee);
 
     let caracteristicas = [
-      servicio + "aplicoAntes" + sheetDatos.getRange(lastRowDat, 32).getValue(),
+      servicio + "aplicoAntes" + datAplicoAntes,
       servicio + "empNoLee",
       servicio + "numeroTrabajadores",
       servicio + "numCiudDifBog",
@@ -155,9 +155,9 @@ function batPsiRisk() {
 
     sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
-    let dataClient1 = htmlData(SSmaestroCot, "Datos", 3, 11);
-    let dataClient2 = htmlData(SSmaestroCot, "Datos", 25, 7);
-    let dataClient3 = htmlData(SSmaestroCot, "Datos", 39, 3);
+    let dataClient1 = htmlData(SSmaestroCot, "Datos", 2, 10);
+    let dataClient2 = htmlData(SSmaestroCot, "Datos", 34, 7);
+    let dataClient3 = htmlData(SSmaestroCot, "Datos", 47, 3);
     let dataValue = htmlData(SServicio, servicio, 3, 16);
     let dataToSend = dataClient1 + dataClient2 + dataClient3 + dataValue;
 
