@@ -40,7 +40,8 @@ function sieteEstandares() {
   sheetCotizaciones.getRange(lastRowCot+1,6).setValue(folderCotUrl);   
   
   //Obtener Actividad Economica
-  let ciiu = sheetDatos.getRange(lastRowDat,16).getValue();
+  let ciiu = searchValues(maestroCotId,nit,"Datos","Nit","Código CIIU de la empresa");
+
   let result = obtenerActividad(ciiu);
 
   
@@ -107,9 +108,10 @@ function sieteEstandares() {
   let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
   sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
 
-  let dataClient = htmlData(SSmaestroCot,"Datos",2,23);
+  let dataClient = htmlData(SSmaestroCot,"Datos",1,13);
+  let dataClient1 = htmlData(SSmaestroCot,"Datos",23,10);
   let dataValue = htmlData(SServicio,servicio,3,6);
-  let dataToSend = result+dataClient+dataValue;
+  let dataToSend = result+dataClient+dataClient1+dataValue;
 
   sendEmail(nombreDoc,slideLink,dataToSend) 
 

@@ -184,7 +184,7 @@ function sgSst() {
 
   sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
-  let dataClient = htmlData(SSmaestroCot,"Datos",2,13);
+  let dataClient = htmlData(SSmaestroCot,"Datos",1,13);
   let dataClient1 = htmlData(SSmaestroCot,"Datos",23,10);
   let dataValue = htmlData(SServicio,servicio,3,18);
   let dataToSend = result+dataClient+dataClient1+dataValue;
