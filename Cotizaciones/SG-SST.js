@@ -29,7 +29,7 @@ function sgSst() {
   let vlrEnf = servicio+"enfermedades";
   let datEnf = searchValues(maestroCotId,nit,"Nit","Indique cuantos casos de trabajadores con alguna enfermedad laboral en trámite tiene la compañia actualmente (0 si ninguno)");
   let vlrAc = servicio+"accidentes";
-  let datAc = searchValues(maestroCotId,nit,"Nit","Cuantos casos de trabajadores con accidentes laborales en proceso. (0 si ninguno)")
+  let datAc = searchValues(maestroCotId,nit,"Nit","Cuantos casos de trabajadores con accidentes laborales en proceso. (0 si ninguno)");
   let vlrNivRies = servicio+"nivelRiesgo"+ claseRiesgo;
 
   caracteristicas.push(vlrEstandares);
@@ -107,7 +107,7 @@ function sgSst() {
   sheetCotizaciones.getRange(lastRowCot+1,6).setValue(folderCotUrl);   
   
   //Obtener Actividad Economica
-  let ciiu = sheetDatos.getRange(lastRowDat,16).getValue();
+  let ciiu = searchValues(maestroCotId,nit,"Nit","Código CIIU de la empresa")
   let result = obtenerActividad(ciiu);
 
   

@@ -5,7 +5,7 @@ function generarCotizacionISO() {
     const lastRowCot = sheetCotizaciones.getLastRow();
     const lastColumnCot = sheetCotizaciones.getLastColumn()
 
-   
+   /* To continue....
   
     // Tarifas según el tipo de servicio
         let NumProcesos = 0;     
@@ -138,7 +138,7 @@ function generarCotizacionISO() {
   }
   
   function cotizarISO45001() {
-    generarCotizacionISO("Consultoria ISO 45001");
+    generarCotizacionISO("Consultoria ISO 45001");*/
   }
   
 
