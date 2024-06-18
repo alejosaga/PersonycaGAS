@@ -40,7 +40,7 @@ function sieteEstandares() {
   sheetCotizaciones.getRange(lastRowCot+1,6).setValue(folderCotUrl);   
   
   //Obtener Actividad Economica
-  let ciiu = searchValues(maestroCotId,nit,"Datos","Nit","Código CIIU de la empresa");
+  let ciiu = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Código CIIU de la empresa");
 
   let result = obtenerActividad(ciiu);
 

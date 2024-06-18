@@ -6,8 +6,8 @@ function sgSst() {
   const lastColumnCot = sheetCotizaciones.getLastColumn()
   //let plantilla = slideSgsstId
 
-  let datEstandares = searchValues(maestroCotId,nit,"Nit","Dando alcance a la resolución 0312 del 2019 indicanos si tienen estándares mínimos actualmente y en que %");
-  let datRepAuto = searchValues(maestroCotId,nit,"Nit","Tienes reporte de la autoevaluación ante el ministerio de trabajo del año 2019, 2020, 2021,  2022 y 2023");    
+  let datEstandares = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Dando alcance a la resolución 0312 del 2019 indicanos si tienen estándares mínimos actualmente y en que %");
+  let datRepAuto = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Tienes reporte de la autoevaluación ante el ministerio de trabajo del año 2019, 2020, 2021,  2022 y 2023");    
   
   let tarifaBasica = tarifas[1][6]
   let costosOperativos = tarifas[2][6];
@@ -21,15 +21,15 @@ function sgSst() {
   let vlrNumTra = servicio+"numeroTrabajadores"+ numEmp;
   let vlrNumCon = servicio+"numeroContratistas"+ numCon
   let vlrVehi = servicio+"vehiculos";
-  let datVehi = searchValues(maestroCotId,nit,"Nit","¿Tienen vehiculos? indicanos cuántos (en numeros)");
+  let datVehi = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","¿Tienen vehiculos? indicanos cuántos (en numeros)");
   let vlrCentros = servicio+"centros";
   let vlrAltRies = servicio+"altoRiesgo";
-  let datAltRies = searchValues(maestroCotId,nit,"Nit","La empresa realiza trabajos de alto riesgo tales como:*");
+  let datAltRies = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","La empresa realiza trabajos de alto riesgo tales como:*");
   let datAltRiesSplited = datAltRies.split(",").length;
   let vlrEnf = servicio+"enfermedades";
-  let datEnf = searchValues(maestroCotId,nit,"Nit","Indique cuantos casos de trabajadores con alguna enfermedad laboral en trámite tiene la compañia actualmente (0 si ninguno)");
+  let datEnf = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Indique cuantos casos de trabajadores con alguna enfermedad laboral en trámite tiene la compañia actualmente (0 si ninguno)");
   let vlrAc = servicio+"accidentes";
-  let datAc = searchValues(maestroCotId,nit,"Nit","Cuantos casos de trabajadores con accidentes laborales en proceso. (0 si ninguno)");
+  let datAc = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Cuantos casos de trabajadores con accidentes laborales en proceso. (0 si ninguno)");
   let vlrNivRies = servicio+"nivelRiesgo"+ claseRiesgo;
 
   caracteristicas.push(vlrEstandares);
@@ -43,11 +43,15 @@ function sgSst() {
   caracteristicas.push(vlrAc);
   caracteristicas.push(vlrNivRies);
 
+  Logger.log("Caracteristicas a buscar:");
+  Logger.log(caracteristicas);
 
 
   let valoresEncontrados = buscarTarifas(caracteristicas); 
 
-  
+// Verificar los valores encontrados antes de usarlos
+Logger.log("Valores encontrados:");
+Logger.log(valoresEncontrados);
   
   let estandares = valoresEncontrados[0]* tarifaBasica;
   let reporteAutoevaluacion = valoresEncontrados[1]* tarifaBasica;
@@ -65,11 +69,20 @@ function sgSst() {
 
   }
   ;
-  let enfermedades = valoresEncontrados[7]*datEnf*datEnf* tarifaBasica;
+   // Asegurarse de que datEnf y datAc son numéricos
+   datEnf = isNumeric(datEnf) ? parseFloat(datEnf) : 0;
+   datAc = isNumeric(datAc) ? parseFloat(datAc) : 0;
+
+  let enfermedades = valoresEncontrados[7]*datEnf* tarifaBasica;
   let accidentes = valoresEncontrados[8]*datAc* tarifaBasica;
   let nivelRiesgo = valoresEncontrados[9]* tarifaBasica;
 
-  
+   // Verificar si los valores son válidos
+   Logger.log({ estandares, reporteAutoevaluacion, numeroTrabajadores, numeroContratistas, vehiculos, centros, altoRiesgo, enfermedades, accidentes, nivelRiesgo });
+
+   if (isNaN(enfermedades) || isNaN(nivelRiesgo)) {
+     throw new Error('Valores no válidos calculados para enfermedades o nivelRiesgo');
+   }
   
   let total = tarifaBasica+estandares+reporteAutoevaluacion+numeroTrabajadores+numeroContratistas+vehiculos+centros+altoRiesgo+enfermedades+accidentes+nivelRiesgo+costosOperativos+marketingSst;
 
@@ -107,7 +120,7 @@ function sgSst() {
   sheetCotizaciones.getRange(lastRowCot+1,6).setValue(folderCotUrl);   
   
   //Obtener Actividad Economica
-  let ciiu = searchValues(maestroCotId,nit,"Nit","Código CIIU de la empresa")
+  let ciiu = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Código CIIU de la empresa")
   let result = obtenerActividad(ciiu);
 
   
@@ -180,12 +193,12 @@ function sgSst() {
    //Datos del cliente y respuestas del form
 
   let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
-  sheetCotizaciones.getRange(lastRowCot,7).setValue(prefilledForm);
+  sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
 
   sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
-  let dataClient = htmlData(SSmaestroCot,"Datos",1,13);
-  let dataClient1 = htmlData(SSmaestroCot,"Datos",23,10);
+  let dataClient = htmlData(SSmaestroCot,"Datos",1,15);
+  let dataClient1 = htmlData(SSmaestroCot,"Datos",24,10);
   let dataValue = htmlData(SServicio,servicio,3,18);
   let dataToSend = result+dataClient+dataClient1+dataValue;
 
@@ -193,6 +206,9 @@ function sgSst() {
   sendEmail(nombreDoc,slideLink,dataToSend) 
 
 }
+function isNumeric(value) {
+   return !isNaN(value) && isFinite(value);
+ }
 
   
 

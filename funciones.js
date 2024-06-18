@@ -4,27 +4,36 @@ function buscarTarifas(caracteristicas) {
   let conditionIndex = headers.indexOf("VlrBuscar");
   let valueIndex = headers.indexOf("peso");
 
-  let valoresEncontrados = []; // Nueva matriz para almacenar los valores encontrados
-
-  let condicionesEncontradas = data.filter(function(row) {
-    
-    return caracteristicas.includes(row[conditionIndex]);
-  });
-
-  // Agregar valores encontrados a la matriz de valores encontrados
-  condicionesEncontradas.forEach(function(row) {
-    valoresEncontrados.push(row[valueIndex]);
-  });
-  
-  // Devolver la matriz de valores encontrados después de la iteración del ciclo
-  if (valoresEncontrados.length > 0) {
-    return valoresEncontrados;
+  if (conditionIndex === -1 || valueIndex === -1) {
+    Logger.log("No se encontró la columna 'VlrBuscar' o 'peso' en los encabezados");
+    return null;
   }
 
-  // Si no se encuentra ningún valor, devolver "null" después de la iteración del ciclo
-  Logger.log("No se encontró ningún valor para las condiciones ingresadas");
-  return null;
+  let valoresEncontrados = Array(caracteristicas.length).fill(0); // Inicializar con ceros
+
+  Logger.log("Datos de tarifas:");
+  Logger.log(data);
+
+  caracteristicas.forEach((caracteristica, index) => {
+    let foundRow = data.find(row => row[conditionIndex] === caracteristica);
+    if (foundRow) {
+      valoresEncontrados[index] = isNumeric(foundRow[valueIndex]) ? parseFloat(foundRow[valueIndex]) : 0;
+    } else {
+      Logger.log(`No se encontró ningún valor para la condición: ${caracteristica}`);
+    }
+  });
+
+  // Verificar si se encontraron todos los valores esperados
+  Logger.log("Valores encontrados:");
+  Logger.log(valoresEncontrados);
+
+  return valoresEncontrados;
 }
+
+function isNumeric(value) {
+  return !isNaN(value) && isFinite(value);
+}
+
 
 
 function addRowNumber(SServicio,sheetName,columnNumber) {

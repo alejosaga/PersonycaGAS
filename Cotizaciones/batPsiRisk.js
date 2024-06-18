@@ -20,8 +20,8 @@ function batPsiRisk() {
 
     let costosOperativos = tarifas[38][6] * numTra;
     let marketingSst = tarifas[39][6] * numTra;
-    let traNoLee = searchValues(maestroCotId,nit,"Nit","La empresa cuenta con trabajadores que no saben leer ni escribir? cuantos?");
-    let datAplicoAntes = searchValues(maestroCotId,nit,"Nit","Se ha aplicado la bateria de riesgo psicosocial antes?");
+    let traNoLee = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","La empresa cuenta con trabajadores que no saben leer ni escribir? cuantos?");
+    let datAplicoAntes = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Se ha aplicado la bateria de riesgo psicosocial antes?");
     console.log('Costos Operativos:', costosOperativos);
     console.log('Marketing SST:', marketingSst);
     console.log('Tra No Lee:', traNoLee);

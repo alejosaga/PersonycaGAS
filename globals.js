@@ -15,22 +15,23 @@ const tarifas = sheetTarifas.getDataRange().getValues();
 
 const carpetaRaiz = DriveApp.getFolderById(carpetaRaizId);
 const linkMaestro = SSmaestroCot.getUrl();
+let clientCod = sheetDatos.getRange(lastRowDat,lastColumnDat-3).getValue();
 let nit = sheetDatos.getRange(lastRowDat,5).getValue();
 let razonSocial = sheetDatos.getRange(lastRowDat,6).getValue();
 let cliCargo = sheetDatos.getRange(lastRowDat,9).getValue();
 let cliContacto = sheetDatos.getRange(lastRowDat,7).getValue();
 let area = sheetDatos.getRange(lastRowDat,8).getValue();
-let numEmp = searchValues(maestroCotId,nit,"Nit","Por favor indique la cantidad de trabajadores que deben aplicar para la bateria de riesgo Psicosocial.");
-let numTra = searchValues(maestroCotId,nit,"Nit","Por favor indique la cantidad de trabajadores que deben aplicar para la bateria de riesgo Psicosocial."); //numero exacto de trabajadores
+let numEmp = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","¿Cuántos trabajadores tiene actualmente directos?*");
+let numTra = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Por favor indique la cantidad de trabajadores que deben aplicar para la bateria de riesgo Psicosocial."); //numero exacto de trabajadores
 let numContra = 0 //numero exacto de contratistas
-let numCon = searchValues(maestroCotId,nit,"Nit","¿Cuántos contratistas tiene actualmente?");
-let datCent = searchValues(maestroCotId,nit,"Nit","¿Cuántos centros de trabajo tienes? (en numeros)");
-let ciudades = searchValues(maestroCotId,nit,"Nit","Indicanos las ciudades principales donde tiene trabajadores*");
-let claseRiesgo = searchValues(maestroCotId,nit,"Datos","Nit","Clase de riesgo");
+let numCon = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","¿Cuántos contratistas tiene actualmente?");
+let datCent = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","¿Cuántos centros de trabajo tienes? (en numeros)");
+let ciudades = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Indicanos las ciudades principales donde tiene trabajadores*");
+let claseRiesgo = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Clase de riesgo");
 let numCiudades = ciudades.split(",").length;
-let consultoria = searchValues(maestroCotId,nit,"Datos","Nit","De acuerdo a sus necesidades seleccione el sistema de gestión sobre el cual requiere consultoría");
-let clientEmail1 = searchValues(maestroCotId,nit,"Datos","Nit","Dirección de correo electrónico");
-let clientEmail2 = searchValues(maestroCotId,nit,"Datos","Nit","Segundo correo electronico (opcional)");
+let consultoria = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","De acuerdo a sus necesidades seleccione el sistema de gestión sobre el cual requiere consultoría");
+let clientEmail1 = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Dirección de correo electrónico");
+let clientEmail2 = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Segundo correo electronico (opcional)");
 
 //fecha de hoy
 let today = new Date();
