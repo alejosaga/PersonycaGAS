@@ -38,9 +38,8 @@ let approveContractForm = "1FAIpQLScnKWRXGB7XND1zK7msYKoLYEqP1eL-LK7zKEjjW9IFnbM
 
 //click-Up
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
-let TEAM_ID = '9017178102'; // Reemplaza con el ID de tu equipo en ClickUp
-
-
+let TEAM_ID = '9013309604'; // Reemplaza con el ID de tu equipo en ClickUp
+let clickClientSpaceId = '90131279877'
 /*
 //Prod
 // Id's hojas de calculo

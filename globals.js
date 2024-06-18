@@ -32,7 +32,7 @@ let numCiudades = ciudades.split(",").length;
 let consultoria = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","De acuerdo a sus necesidades seleccione el sistema de gestión sobre el cual requiere consultoría");
 let clientEmail1 = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Dirección de correo electrónico");
 let clientEmail2 = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Segundo correo electronico (opcional)");
-
+let clickUpClientFolderId = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","clickUpFolderId");
 //fecha de hoy
 let today = new Date();
 let dd = today.getDate();

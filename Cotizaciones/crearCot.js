@@ -1,7 +1,9 @@
 function cotizar() {
   
   addRowNumber(SSmaestroCot,"Datos",lastColumnDat-3);
-    
+  let ClientFolderId = createClickUpFolder(clickClientSpaceId, razonSocial+" "+nit)
+  sheetDatos.getRange(lastRowDat,lastColumnDat-4).setValue(ClientFolderId);
+   
   switch(servicio) {
     case "Consultoria SG-Seguridad y salud en el trabajo":
       if(claseRiesgo<4 && numEmp == "Menos de 11"){
