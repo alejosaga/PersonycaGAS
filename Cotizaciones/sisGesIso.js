@@ -38,21 +38,34 @@ function generarCotizacionISO() {
     let valoresEncontrados = buscarTarifas(caracteristicas);
     console.log('Valores Encontrados:', valoresEncontrados);
 
+    valoresEncontrados = valoresEncontrados.map((elemento) => elemento * tarifaBasica);
+    console.log('Valores Encontrados Ajustados:', valoresEncontrados);
+
+    
+    let numProcesos = valoresEncontrados[0] * datNumProcesos;   
+    let maestroCotIdaestroDocu = valoresEncontrados[1]; 
+    let dirTec = valoresEncontrados[2]
+    let dirTecExp;
+    if (datdirTecExp < 1){
+      dirTecExp = valoresEncontrados[3]
+    }
+    else{
+      dirTecExp = 0
+    }
+    let prevAudi = valoresEncontrados[4];
+    let costoCapacitaciones = valoresEncontrados[5]*datNumProcesos;
+    let costoConsultor = valoresEncontrados[6]*datNumProcesos;
+    let costoAdmin = valoresEncontrados[7]*datNumProcesos;
+    let costoOperativo = valoresEncontrados[8]*datNumProcesos;
+    
+
+
+    let totalBruto = numProcesos + maestroCotIdaestroDocu + dirTec + dirTecExp + prevAudi + costoCapacitaciones + costoConsultor + costoAdmin + costoOperativo;
+    let rentPersonyca = totalBruto*0.3
+    let totalNeto = rentPersonyca + totalBruto
+    console.log(totalNeto)
+
     /*
-    NumProcesos = valoresEncontrados[0] * datNumProcesos * tarifaBasica;   
-    MaestroDocu =valoresEncontrados[1] * tarifaBasica; ; 
-    dirTec = 0;
-    dirTecExp = 0;
-    PrevAudi = 0;
-    capacitaciones = 0;
-    Consultor = 0;
-    costoAdmin = 0;
-    costoOperativo = 0;
-    rentPersonyca = 0;
-
-
-    const total = tarifaBasica + costosOperativos + marketing;
-  
     // Insertar los datos de la cotización en la hoja de cotizaciones
     sheetCotizaciones.appendRow([
       nit,
@@ -75,7 +88,7 @@ function generarCotizacionISO() {
       to: 'client@example.com', // Reemplaza con el correo del cliente
       subject: `Cotización de ${servicio}`,
       htmlBody: emailBody
-    });*/
+    }); */
   }
   
   
