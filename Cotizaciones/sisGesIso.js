@@ -63,6 +63,8 @@ function generarCotizacionISO() {
     let totalBruto = numProcesos + maestroCotIdaestroDocu + dirTec + dirTecExp + prevAudi + costoCapacitaciones + costoConsultor + costoAdmin + costoOperativo;
     let rentPersonyca = totalBruto*0.3
     let totalNeto = rentPersonyca + totalBruto
+    let vlrMes = totalNeto / 12
+    let anticipo = vlrMes * 0.5
     console.log(totalNeto)
 
     /*
