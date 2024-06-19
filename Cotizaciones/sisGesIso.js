@@ -1,106 +1,56 @@
 function generarCotizacionISO() {
-    const BD_servicio = sgsstServiceId;
-    const SServicio = SpreadsheetApp.openById(BD_servicio);
+    
+    const SServicio = SpreadsheetApp.openById(isoSisGesCotId);
     const sheetCotizaciones = SServicio.getSheetByName(servicio);
     const lastRowCot = sheetCotizaciones.getLastRow();
     const lastColumnCot = sheetCotizaciones.getLastColumn()
-
-   /* To continue....
-  
+    
+     
     // Tarifas según el tipo de servicio
-        let NumProcesos = 0;     
-        let MaestroDocu =0; 
-        let dirTec = 0;
-        let dirTecExp = 0;
-        let PrevAudi = 0;
-        let capacitaciones = 0;
-        let Consultor = 0;
-        let costoAdmin = 0;
-        let costoOperativo = 0;
-        let rentPersonyca = 0;
-  
-    switch(consultoria){
-        case "ISO - 9001 (Sistema de Gestión por procesos para la satisfacción del cliente)":
-            NumProcesos = 0;   
-            MaestroDocu =0; 
-            dirTec = 0;
-            dirTecExp = 0;
-            PrevAudi = 0;
-            capacitaciones = 0;
-            Consultor = 0;
-            costoAdmin = 0;
-            costoOperativo = 0;
-            rentPersonyca = 0;
-        break;
+    let tarifaBasica = tarifas[1][6];
+    let datNumProcesos = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Indique el número de procesos (áreas o departamentos) que tiene su organización. Ejemplo: Planificación Estratégica, Compras, Comercial, Talento Humano, etc.");     
+    let datMaestroDocu = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","La compañía tiene un sistema de gestión documental con un listado maestro de documentos?");
+    let datdirTec = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Actualmente la compañía cuenta con un director técnico notificado ante el INVIMA?");
+    let datdirTecExp = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Cuántos años de experiencia tiene el director técnico");
+    let datPrevAudi = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","la compañía ha recibido alguna de las siguientes opciones de auditorías?");
+   
+    console.log(datNumProcesos);
+    console.log(datMaestroDocu);
+    console.log(datdirTec);
+    console.log(datdirTecExp);
+    console.log(datPrevAudi);
+     
+    
+    let caracteristicas = [
+      servicio + "NumProcesos",
+      servicio + "MaestroDocu" + datMaestroDocu,
+      consultoria + "dirTec" + datdirTec,
+      consultoria + "dirTecExp" + datdirTecExp,
+      servicio + "PrevAudi" + datPrevAudi,
+      servicio + "capacitaciones",
+      servicio + "Consultor",
+      servicio + "costoAdmin",
+      servicio + "costoOperativo",
+      servicio + "rentPersonyca"
 
-        case "ISO - 13485 (Requisitos para propositos regulatorios dispositivos médicos)":
-            NumProcesos = 0;   
-            MaestroDocu =0; 
-            dirTec = 0;
-            dirTecExp = 0;
-            PrevAudi = 0;
-            capacitaciones = 0;
-            Consultor = 0;
-            costoAdmin = 0;
-            costoOperativo = 0;
-            rentPersonyca = 0;
-        break;
+    ];
 
-        case "ISO - 45001 (Seguridad y salud en el trabajo)":
-            NumProcesos = 0;   
-            MaestroDocu =0; 
-            dirTec = 0;
-            dirTecExp = 0;
-            PrevAudi = 0;
-            capacitaciones = 0;
-            Consultor = 0;
-            costoAdmin = 0;
-            costoOperativo = 0;
-            rentPersonyca = 0;
-        break;
+    let valoresEncontrados = buscarTarifas(caracteristicas);
+    console.log('Valores Encontrados:', valoresEncontrados);
 
-        case "ISO - 14001 (Sistemas de gestión ambiental)":
-            NumProcesos = 0;   
-            MaestroDocu =0; 
-            dirTec = 0;
-            dirTecExp = 0;
-            PrevAudi = 0;
-            capacitaciones = 0;
-            Consultor = 0;
-            costoAdmin = 0;
-            costoOperativo = 0;
-            rentPersonyca = 0;
-        break;
+    /*
+    NumProcesos = valoresEncontrados[0] * datNumProcesos * tarifaBasica;   
+    MaestroDocu =valoresEncontrados[1] * tarifaBasica; ; 
+    dirTec = 0;
+    dirTecExp = 0;
+    PrevAudi = 0;
+    capacitaciones = 0;
+    Consultor = 0;
+    costoAdmin = 0;
+    costoOperativo = 0;
+    rentPersonyca = 0;
 
-        case "Sistemas integrados de Gestión (9001, 45001 y 45001)":
-            NumProcesos = 0;   
-            MaestroDocu =0; 
-            dirTec = 0;
-            dirTecExp = 0;
-            PrevAudi = 0;
-            capacitaciones = 0;
-            Consultor = 0;
-            costoAdmin = 0;
-            costoOperativo = 0;
-            rentPersonyca = 0;
-        break;
 
-        case "Sistemas integrados de Gestión (9001 y 13485)":
-            NumProcesos = 0;   
-            MaestroDocu =0; 
-            dirTec = 0;
-            dirTecExp = 0;
-            PrevAudi = 0;
-            capacitaciones = 0;
-            Consultor = 0;
-            costoAdmin = 0;
-            costoOperativo = 0;
-            rentPersonyca = 0;
-        break;
-      default:
-        throw new Error("Servicio no soportado");
-    }
-  
     const total = tarifaBasica + costosOperativos + marketing;
   
     // Insertar los datos de la cotización en la hoja de cotizaciones
@@ -125,20 +75,10 @@ function generarCotizacionISO() {
       to: 'client@example.com', // Reemplaza con el correo del cliente
       subject: `Cotización de ${servicio}`,
       htmlBody: emailBody
-    });
+    });*/
   }
   
-  // Ejemplo de uso:
-  function cotizarISO9001() {
-    generarCotizacionISO("Consultoria ISO 9001");
-  }
   
-  function cotizarISO14001() {
-    generarCotizacionISO("Consultoria ISO 14001");
-  }
-  
-  function cotizarISO45001() {
-    generarCotizacionISO("Consultoria ISO 45001");*/
-  }
+    
   
 
