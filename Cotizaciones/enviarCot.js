@@ -23,12 +23,19 @@ function traerDatos() {
     }
   
     let ssId;
+    let servicio;
     switch(sheetCot) {
       case "Consultoria SG-Seguridad y salud en el trabajo":
         ssId = sgsstServiceId;
+        servicio = searchValues(maestroCotId, numCot, "Datos", "cotizacion", "Servicios de interes");
         break;
       case "Aplicacion Bateria riesgo psicosocial":
         ssId = batPsiServiceId;
+        servicio = searchValues(maestroCotId, numCot, "Datos", "cotizacion", "Servicios de interes");
+        break;
+      case "Sistemas de Gestion de Calidad -ISO":
+        ssId = isoSisGesCotId;
+        servicio = searchValues(maestroCotId, numCot, "Datos", "cotizacion", "De acuerdo a sus necesidades seleccione el sistema de gestión sobre el cual requiere consultoría");
         break;
       default:
         throw new Error("Sheet name not recognized: " + sheetCot);
@@ -37,7 +44,7 @@ function traerDatos() {
     Logger.log('ssId: ' + ssId);
   
     // Recupera datos Archivo Clientes
-    let servicio = searchValues(maestroCotId, numCot, "Datos", "cotizacion", "Servicios de interes");   
+       
     let slideName = numCot;
     
     let slideId = searchValues(ssId, slideName, sheetCot, "slideName", "slideId");

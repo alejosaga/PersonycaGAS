@@ -197,7 +197,7 @@ function generarCotizacionISO() {
     sheetCotizaciones.getRange(lastRowCot+1,lastColumnCot-2).setValue(pdfID)
   //Datos del cliente y respuestas del form
 
-    let prefilledForm = preFilledForm(vlrMes,sheetCotizaciones,lastRowCot,lastColumnCot,servi);
+    let prefilledForm = preFilledForm(vlrMes,sheetCotizaciones,lastRowCot,lastColumnCot,servicio);
     sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
 
     sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
