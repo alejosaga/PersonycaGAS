@@ -11,8 +11,7 @@ function buscarTarifas(caracteristicas) {
 
   let valoresEncontrados = Array(caracteristicas.length).fill(0); // Inicializar con ceros
 
-  Logger.log("Datos de tarifas:");
-  Logger.log(data);
+  
 
   caracteristicas.forEach((caracteristica, index) => {
     let foundRow = data.find(row => row[conditionIndex] === caracteristica);

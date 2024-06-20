@@ -11,9 +11,12 @@ function generarCotizacionISO() {
     let datNumProcesos = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Indique el número de procesos (áreas o departamentos) que tiene su organización. Ejemplo: Planificación Estratégica, Compras, Comercial, Talento Humano, etc.");     
     let datMaestroDocu = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","La compañía tiene un sistema de gestión documental con un listado maestro de documentos?");
     let datdirTec = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Actualmente la compañía cuenta con un director técnico notificado ante el INVIMA?  ");
-    let datdirTecExp = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Cuántos años de experiencia tiene el director técnico  ");
+    let datdirTecExp = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Cuántos años de experiencia tiene el director técnico?");
     let datPrevAudi = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","la compañía ha recibido alguna de las siguientes opciones de auditorías?");
-   
+    let dirTecInt = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","La compañía cuenta con un director técnico notificado ante el INVIMA?  ");
+    let dirTecExpInt = searchValues(maestroCotId,clientCod,"Datos","Codigo Cliente","Cuántos años de experiencia acredita el director técnico?");
+    
+    //to do agregar preguntas de sistema integrado 1
     
     let caracteristicas = [
       servicio + "NumProcesos",
@@ -25,7 +28,11 @@ function generarCotizacionISO() {
       servicio + "Consultor",
       servicio + "costoAdmin",
       servicio + "costoOperativo",
-      servicio + "rentPersonyca"
+      servicio + "rentPersonyca",
+      consultoria + "dirTecInt" + dirTecInt,
+      consultoria + "dirTecExpInt" + dirTecExpInt,
+      consultoria + "RecargoBinorma",
+      
 
     ];
 
@@ -51,10 +58,14 @@ function generarCotizacionISO() {
     let costoConsultor = valoresEncontrados[6]*datNumProcesos;
     let costoAdmin = valoresEncontrados[7]*datNumProcesos;
     let costoOperativo = valoresEncontrados[8]*datNumProcesos;
+    let costoDirTecInt = valoresEncontrados[10]*datNumProcesos;
+    let costoDirTecExpInt = valoresEncontrados[11]*datNumProcesos;
+    let costoBinorma = valoresEncontrados[12]*datNumProcesos;
+    
     
 
 
-    let totalBruto = numProcesos + maestroCotIdaestroDocu + dirTec + dirTecExp + prevAudi + costoCapacitaciones + costoConsultor + costoAdmin + costoOperativo;
+    let totalBruto = numProcesos + maestroCotIdaestroDocu + dirTec + dirTecExp + prevAudi + costoCapacitaciones + costoConsultor + costoAdmin + costoOperativo + costoDirTecInt + costoDirTecExpInt + costoBinorma;
     let rentPersonyca = totalBruto*0.3
     let totalNeto = rentPersonyca + totalBruto
     let vlrMes = totalNeto / 12
@@ -80,6 +91,9 @@ function generarCotizacionISO() {
     sheetCotizaciones.getRange(lastRowCot + 1, 17).setValue(rentPersonyca);
     sheetCotizaciones.getRange(lastRowCot + 1, 18).setValue(vlrMes);
     sheetCotizaciones.getRange(lastRowCot + 1, 19).setValue(anticipo);
+    sheetCotizaciones.getRange(lastRowCot + 1, 20).setValue(dirTecInt);
+    sheetCotizaciones.getRange(lastRowCot + 1, 21).setValue(dirTecExpInt);
+    sheetCotizaciones.getRange(lastRowCot + 1, 22).setValue(costoBinorma);
     
     addRowNumber(SServicio, servicio, 3);
 
@@ -173,7 +187,7 @@ function generarCotizacionISO() {
     presentacion.replaceAllText("{{vlrMesLetras}}", vlrMesLetras.toLowerCase());
     presentacion.replaceAllText("{{area}}", area);
     presentacion.replaceAllText("{{numProcesos}}", datNumProcesos);
-  
+   
 
 
     presentacion.saveAndClose();
@@ -189,7 +203,7 @@ function generarCotizacionISO() {
     sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
 
     let dataClient = htmlData(SSmaestroCot,"Datos",1,23);
-    let dataValue = htmlData(SServicio,servicio,3,17);
+    let dataValue = htmlData(SServicio,servicio,3,18);
     let dataToSend = dataClient+dataValue;
 
 
