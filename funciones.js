@@ -143,12 +143,12 @@ function obtenerActividad(ciiu){
 }
 
 
-function preFilledForm(total,sheetCotizaciones,lastRowCot,column){
+function preFilledForm(total,sheetCotizaciones,lastRowCot,column,service){
   //Form aprobacion pre-llenado
   let slideName = sheetCotizaciones.getRange(lastRowCot+1,column).getValue();
   console.log(slideName);
   let numCot = slideName.replace(/ /g, '+');
-  let hojaCot = servicio.replace(/ /g, '+');
+  let hojaCot = service.replace(/ /g, '+');
   let companyName = razonSocial.replace(/ /g, '+');
   let prefilledForm= "https://docs.google.com/forms/d/e/"+approveCotForm+"/viewform?usp=pp_url&entry.1149107413="+hojaCot+"&entry.1538120679="+nit+"&entry.127145366="+numCot+"&entry.1514100276="+total+"&entry.933752610="+companyName
 
@@ -377,11 +377,11 @@ function getFolderIds(sgSstFolderId) {
   return {doc: docFolder.getId(), pdf: pdfFolder.getId()};
   
 }
-function sendEmail(numCot,link,dataToSend) {
+function sendEmail(numCot,link,dataToSend,service) {
 
   let firstName = "Nancy";
   let subject = "Revisar: " + numCot;
-  let body = '<p>Hola <strong>'+ firstName +'</strong>, tenemos una nueva cotizacion por revisar para la empresa <strong>'+razonSocial+'</strong> para el servicio de '+servicio+'.</p> <p>Adjunto se encuentra el archivo PDF y un link donde podras encontrar el detalle de la cotizacion y si se requiere hacer los cambios que se consideren pertinentes.'+link+'<p>Tambien podras revisar los valores en el archivo maestro en la hoja de cotizaciones correspondiente</p>'+linkMaestro+'<p>Las siguientes son las respuestas al formulario de diagnostico: </p>'+dataToSend;
+  let body = '<p>Hola <strong>'+ firstName +'</strong>, tenemos una nueva cotizacion por revisar para la empresa <strong>'+razonSocial+'</strong> para el servicio de '+service+'.</p> <p>Adjunto se encuentra el archivo PDF y un link donde podras encontrar el detalle de la cotizacion y si se requiere hacer los cambios que se consideren pertinentes.'+link+'<p>Tambien podras revisar los valores en el archivo maestro en la hoja de cotizaciones correspondiente</p>'+linkMaestro+'<p>Las siguientes son las respuestas al formulario de diagnostico: </p>'+dataToSend;
   MailApp.sendEmail({
       to: personycaEmail1,
       cc: personycaEmail2,

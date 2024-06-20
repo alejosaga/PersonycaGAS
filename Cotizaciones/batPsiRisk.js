@@ -150,7 +150,7 @@ function batPsiRisk() {
     sheetCotizaciones.getRange(lastRowCot + 1, lastColumnCot - 1).setValue(copiaID);
     sheetCotizaciones.getRange(lastRowCot + 1, lastColumnCot - 2).setValue(pdfID);
 
-    let prefilledForm = preFilledForm(total, sheetCotizaciones, lastRowCot, 21);
+    let prefilledForm = preFilledForm(total, sheetCotizaciones, lastRowCot, lastColumnCot,servicio);
     sheetCotizaciones.getRange(lastRowCot + 1, 7).setValue(prefilledForm);
 
     sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
@@ -161,7 +161,7 @@ function batPsiRisk() {
     let dataValue = htmlData(SServicio, servicio, 3, 16);
     let dataToSend = dataClient1 + dataClient2 + dataClient3 + dataValue;
 
-    sendEmail(nombreDoc, slideLink, dataToSend);
+    sendEmail(nombreDoc, slideLink, dataToSend,servicio);
 
   } catch (e) {
     console.error('Error: ', e);

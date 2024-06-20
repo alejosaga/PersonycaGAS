@@ -105,7 +105,7 @@ function sieteEstandares() {
   //Datos del cliente y respuestas del form
 
   
-  let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
+  let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,lastColumnCot,servicio);
   sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
 
   let dataClient = htmlData(SSmaestroCot,"Datos",1,13);
@@ -113,6 +113,6 @@ function sieteEstandares() {
   let dataValue = htmlData(SServicio,servicio,3,6);
   let dataToSend = result+dataClient+dataClient1+dataValue;
 
-  sendEmail(nombreDoc,slideLink,dataToSend) 
+  sendEmail(nombreDoc,slideLink,dataToSend,servicio) 
 
 }

@@ -43,8 +43,7 @@ function sgSst() {
   caracteristicas.push(vlrAc);
   caracteristicas.push(vlrNivRies);
 
-  Logger.log("Caracteristicas a buscar:");
-  Logger.log(caracteristicas);
+  
 
 
   let valoresEncontrados = buscarTarifas(caracteristicas); 
@@ -78,8 +77,7 @@ Logger.log(valoresEncontrados);
   let nivelRiesgo = valoresEncontrados[9]* tarifaBasica;
 
    // Verificar si los valores son válidos
-   Logger.log({ estandares, reporteAutoevaluacion, numeroTrabajadores, numeroContratistas, vehiculos, centros, altoRiesgo, enfermedades, accidentes, nivelRiesgo });
-
+   
    if (isNaN(enfermedades) || isNaN(nivelRiesgo)) {
      throw new Error('Valores no válidos calculados para enfermedades o nivelRiesgo');
    }
@@ -192,7 +190,7 @@ Logger.log(valoresEncontrados);
  
    //Datos del cliente y respuestas del form
 
-  let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,23);
+  let prefilledForm = preFilledForm(total,sheetCotizaciones,lastRowCot,lastColumnCot,servicio);
   sheetCotizaciones.getRange(lastRowCot+1,7).setValue(prefilledForm);
 
   sheetDatos.getRange(lastRowDat,lastColumnDat).setValue(nombreDoc);
@@ -203,7 +201,7 @@ Logger.log(valoresEncontrados);
   let dataToSend = result+dataClient+dataClient1+dataValue;
 
 
-  sendEmail(nombreDoc,slideLink,dataToSend) 
+  sendEmail(nombreDoc,slideLink,dataToSend,servicio) 
 
 }
 function isNumeric(value) {
