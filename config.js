@@ -38,7 +38,7 @@ let approveContractForm = "1FAIpQLSfZp-jFfZ7cZBTieQNGC3XZbQYfOt6XBsvWS0-3VfXm0A8
 
 //click-Up
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
-let TEAM_ID = '9013247276'; // Reemplaza con el ID de tu equipo en ClickUp
+let TEAM_ID = '9017178102'; // Reemplaza con el ID de tu equipo en ClickUp
 /*
 //DEV
 // Id's hojas de calculo
