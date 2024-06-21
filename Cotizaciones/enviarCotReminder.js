@@ -1,10 +1,11 @@
-function parseCotizacionString(cotizacionString) {
+function parseCotizacionString() {
     const SSreminders = SpreadsheetApp.openById(remidersCotId);
     const shetReminders = SSreminders.getSheetByName("Reminders");
     const lastRowRem = shetReminders.getLastRow();
     const lastColumnRem = shetReminders.getLastColumn();
 
-    let  data = shetReminders.getDataRange(lastRowRem, 2)  // Dividir el string por las comas
+    let  data = shetReminders.getRange(lastRowRem, 2).getValue()  // Dividir el string por las comas
+    
     const parts = data.split(',');
   
     // Crear un objeto para almacenar las partes
