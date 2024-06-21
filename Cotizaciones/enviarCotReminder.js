@@ -4,9 +4,7 @@ function parseCotizacionString(cotizacionString) {
     const lastRowRem = shetReminders.getLastRow();
     const lastColumnRem = shetReminders.getLastColumn();
 
-    let  data = shetReminders.getDataRange().getValues()
-
-    // Dividir el string por las comas
+    let  data = shetReminders.getDataRange(lastRowRem, 2)  // Dividir el string por las comas
     const parts = data.split(',');
   
     // Crear un objeto para almacenar las partes
