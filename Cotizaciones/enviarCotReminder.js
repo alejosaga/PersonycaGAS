@@ -1,6 +1,6 @@
 function parseCotizacionString(cotizacionString) {
     const SSreminders = SpreadsheetApp.openById(remidersCotId);
-    const shetReminders = SSreminders.getSheetByName(Reminders);
+    const shetReminders = SSreminders.getSheetByName("Reminders");
     const lastRowRem = shetReminders.getLastRow();
     const lastColumnRem = shetReminders.getLastColumn();
 
