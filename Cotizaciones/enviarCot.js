@@ -92,6 +92,7 @@ function traerDatos() {
     let pdfBlob = DriveApp.getFileById(slideId).getAs(MimeType.PDF);
     let pdfFile = carpetaPDF.createFile(pdfBlob);
     let fileId = pdfFile.getId();
+    sheetApprove.getRange(approvelastRow, 9).setValue(fileId);
   
     let str = contactName;
     let firstWord = firstWordToTitleCase(str);
