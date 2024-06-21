@@ -1,7 +1,7 @@
 function prefillForm() {
     const sheetId = '1f5LwW6Ko0o4mUVrhgO5Fa6AiiRTdmENyhx4Oj8r3hK0';
     const formId = '1q0gnfJRANe7t6JEtqlXpvCqm02ooUHoICuRnJ0MeP6c'; // Reemplaza con el ID de tu formulario de Google
-    const sheet = SpreadsheetApp.openById(sheetId).getSheetByName('Sheet1'); // Asegúrate de que el nombre de la hoja sea correcto
+    const sheet = SpreadsheetApp.openById(sheetId).getSheetByName('Aprobaciones'); // Asegúrate de que el nombre de la hoja sea correcto
     const form = FormApp.openById(formId);
     
     // Borra las opciones actuales
