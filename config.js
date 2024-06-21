@@ -1,7 +1,46 @@
 // contiene ID's email's y otros datos que se deben cambiar cuando se cambia de ambiente
 // se debe comentariar lo que no aplica para el ambiente indicado
-
 //STG
+// Id's hojas de calculo
+let maestroCotId = '1ZE7xP20uwaI02b8XDMA4eGwhSNfTseZ64OwP_5-Z4fA'; //Maestro Cotizaciones
+let batPsiServiceId = '1tJ8PaxtWCa3lVb_MG45y87e2xCkLwR4ffcBKmFp8NTk';
+let sevenStandarServiceId = '14s3dxo7YCEwmmduj_UzLQ7IsYAN0ZA_M4jsL9X_TM_U';
+let sgsstServiceId = '14s3dxo7YCEwmmduj_UzLQ7IsYAN0ZA_M4jsL9X_TM_U'
+let cotApproveId = '1f5LwW6Ko0o4mUVrhgO5Fa6AiiRTdmENyhx4Oj8r3hK0'
+let contractmaestroId = '1-NWDrhxGn6BOzV-Rd6E6yEEfbdGehpOJ0N3PxNQKggs'
+let contractApproveId = '1J22QQQbYWyOKEdyeBKWTLPhK9qvysMyd4GGXfq3k2Ek'
+
+//Plantillas
+let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
+let slideSevenStanId = "1Hx5R0CPuA85A8ThQJijn8-j9oc2qyB7OPFlsL9FT52s"
+let slideSgsstId = "1QsXMBN4IznmhdsEO_iL1cajdmj3J5dWFF3Lm5KUXrpQ"
+let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag"
+let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4"
+let contratoPSI = "1w8YIKpGm2TDWN0G2S4OH7DJ9F9uJMkAUxypw0ee1TsM";
+let tasksSgsst = "";
+let tasks7Standates ="";
+let tasksPSI = "";
+
+//folders
+let carpetaRaizId = "1W4gM031Lv1Dr9CpTiplmlLIB0WnZRIhi"
+let folderClienteActivoId = "1-tAJXHCFe9JrDFizo1BvKThOmkHfTu7g"
+
+//email's
+let personycaEmail1 = "bitsaga2804@gmail.com"
+let personycaEmail2 = "autopersonyca@gmail.com"
+let personycaEmail3 = "alejandrosaga61@gmail.com"
+
+//Prefilled forms
+
+let approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w"; 
+let clientAcceptForm = "1FAIpQLSeP0HTc6a7hmvG6SF8Slyr67rTTwkslnrPVWaJGGeHqEqAr4Q";
+let approveContractForm = "1FAIpQLSfZp-jFfZ7cZBTieQNGC3XZbQYfOt6XBsvWS0-3VfXm0A8uew";
+
+//click-Up
+let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
+let TEAM_ID = '9013247276'; // Reemplaza con el ID de tu equipo en ClickUp
+/*
+//DEV
 // Id's hojas de calculo
 let maestroCotId = '1ONjXHvsob4GxwJ5we8CCkOUd-3UhHpEqr6ZO4jMDROs'; // Maestro Cotizaciones
 let batPsiServiceId = '18B0YZH-YJYXKZZiRR99hC_GGKEif-Ij9NcyeAiND_aU';
