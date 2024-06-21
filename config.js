@@ -9,6 +9,7 @@ let sgsstServiceId = '14s3dxo7YCEwmmduj_UzLQ7IsYAN0ZA_M4jsL9X_TM_U'
 let cotApproveId = '1f5LwW6Ko0o4mUVrhgO5Fa6AiiRTdmENyhx4Oj8r3hK0'
 let contractmaestroId = '1-NWDrhxGn6BOzV-Rd6E6yEEfbdGehpOJ0N3PxNQKggs'
 let contractApproveId = '1J22QQQbYWyOKEdyeBKWTLPhK9qvysMyd4GGXfq3k2Ek'
+let remidersCotId = "1Xy6c4hqfk-FGQHBLNXRwIyyMcvjGEAMaYWAXmSIQ7f0"
 
 //Plantillas
 let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
