@@ -1,18 +1,29 @@
 function prefillForm() {
     const sheetId = '1f5LwW6Ko0o4mUVrhgO5Fa6AiiRTdmENyhx4Oj8r3hK0';
-    const formId = '1q0gnfJRANe7t6JEtqlXpvCqm02ooUHoICuRnJ0MeP6c'; // Reemplaza con el ID de tu formulario de Google
-    const sheet = SpreadsheetApp.openById(sheetId).getSheetByName('Aprobaciones'); // Asegúrate de que el nombre de la hoja sea correcto
-    const form = FormApp.openById(formId);
+    const formId = '1q0gnfJRANe7t6JEtqlXpvCqm02ooUHoICuRnJ0MeP6c';
+    const sheet = SpreadsheetApp.openById(sheetId).getSheetByName('Aprobaciones');
     
-    // Borra las opciones actuales
+    if (!sheet) {
+      Logger.log('Hoja no encontrada. Asegúrate de que el nombre de la hoja es correcto.');
+      return;
+    }
+    
+    const form = FormApp.openById(formId);
     const items = form.getItems(FormApp.ItemType.CHECKBOX);
     const checkboxItem = items[0].asCheckboxItem();
+  
+    // Borrar las opciones actuales
     checkboxItem.setChoiceValues([]);
   
     // Obtener las cotizaciones del último mes
     const oneMonthAgo = new Date();
     oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
     const data = sheet.getDataRange().getValues();
+  
+    if (data.length <= 1) {
+      Logger.log('No se encontraron datos o sólo se encontró el encabezado.');
+      return;
+    }
   
     let options = [];
     data.forEach((row, index) => {
@@ -23,13 +34,18 @@ function prefillForm() {
       }
     });
   
+    if (options.length === 0) {
+      Logger.log('No se encontraron cotizaciones del último mes.');
+      return;
+    }
+  
     // Añadir nuevas opciones
     checkboxItem.setChoiceValues(options);
   }
   
   function sendWeeklyReminder() {
-    const emailRecipient = 'autopersonyca@gmail.com'; // Reemplaza con tu email
-    const formUrl = 'https://docs.google.com/forms/d/1q0gnfJRANe7t6JEtqlXpvCqm02ooUHoICuRnJ0MeP6c/edit'; // Reemplaza con la URL de tu formulario
+    const emailRecipient = 'autopersonyca@gmail.com';
+    const formUrl = 'https://docs.google.com/forms/d/1q0gnfJRANe7t6JEtqlXpvCqm02ooUHoICuRnJ0MeP6c/edit';
   
     prefillForm();
   
