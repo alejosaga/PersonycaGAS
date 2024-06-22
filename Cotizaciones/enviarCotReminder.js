@@ -91,9 +91,9 @@ function parseCotizacionString() {
   
           // Enviar el correo electrónico con el archivo adjunto
           MailApp.sendEmail({
-            to: email,
+            to: email,personycaEmail1,
             subject: `Seguimiento cotizacion ${servicioInteres} Personyca`,
-            body: `Estimado ${nombreContacto},\n\nLe escribimos para retomar el proceso de cotizacion ${cotizacionValue} de ${servicioInteres}.\n\n que iniciamos dias atras, sabemos las muchas ocupaciones que puede tener, pero estamos para ayudarlo, Adjunto encontrará el documento con la oferta economica del servicio. En caso de estar de acuerdo con la cotización agradecemos pueda completar el formulario en el siguiente enlace: ${formLink}.\n\nAgradecemos su atención y recuerde que quedamos atentos ante cualquier consulta que pueda surgir al respecto.\n\nSaludos cordiales,\nPersonyca`,
+            body: `Estimado ${nombreContacto},\n\nLe escribimos para retomar el proceso de cotizacion ${cotizacionValue} de ${servicioInteres}.\n\nPor favor haganos saber si pudo revisar la propuesta, si tiene alguna duda o de que manera podemos llegar a un acuerdo. Adjunto encontrará el documento con la oferta economica del servicio. En caso de estar de acuerdo con la cotización agradecemos pueda completar el formulario en el siguiente enlace: ${formLink}.\n\nAgradecemos su atención y recuerde que quedamos atentos ante cualquier consulta que pueda surgir al respecto.\n\nSaludos cordiales,\nPersonyca`,
             attachments: [file.getAs(MimeType.PDF)]
           });
           Logger.log(`Correo enviado a ${email} con archivo adjunto para ${cotizacionValue}`);
