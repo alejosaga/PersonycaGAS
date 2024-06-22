@@ -27,8 +27,8 @@ let carpetaRaizId = "1W4gM031Lv1Dr9CpTiplmlLIB0WnZRIhi"
 let folderClienteActivoId = "1-tAJXHCFe9JrDFizo1BvKThOmkHfTu7g"
 
 //email's
-let personycaEmail1 = "bitsaga2804@gmail.com"
-let personycaEmail2 = "autopersonyca@gmail.com"
+let personycaEmail1 = "autopersonyca@gmail.com"
+let personycaEmail2 = "bitsaga2804@gmail.com"
 let personycaEmail3 = "alejandrosaga61@gmail.com"
 
 //Prefilled forms
