@@ -30,7 +30,7 @@ function parseCotizacionString() {
     const cotizaciones = parseCotizacionString();
   
     const otroSheet = SpreadsheetApp.openById(batPsiServiceId).getSheetByName('Aplicacion Bateria riesgo psico');
-    const emailSheet = SpreadsheetApp.openById(maestroCotId).getSheetByName('Datos'); // Asegúrate de que el nombre de la hoja es correcto
+    const emailSheet = SpreadsheetApp.openById(emailSheetId).getSheetByName('Datos'); // Asegúrate de que el nombre de la hoja es correcto
     const aprobacionCotSheet = SpreadsheetApp.openById(cotApproveId).getSheetByName('Aprobaciones'); // Asegúrate de que el nombre de la hoja es correcto
   
     if (!otroSheet || !emailSheet || !aprobacionCotSheet) {
@@ -75,11 +75,12 @@ function parseCotizacionString() {
           }
         });
   
-        // Buscar el enlace del formulario prellenado en Aprobacion Cot-STG
+        // Buscar el enlace del formulario prellenado y la URL del archivo PDF en Aprobacion Cot-STG
         let formLink = null;
         aprobacionCotData.forEach(aprobacionRow => {
           if (aprobacionRow.includes(cotizacionValue)) {
-            formLink = aprobacionRow[aprobacionRow.length - 1]; // Última columna
+            formLink = aprobacionRow[aprobacionRow.length - 2]; // Penúltima columna
+            fileUrl = aprobacionRow[aprobacionRow.length - 1]; // Última columna
           }
         });
   
