@@ -69,7 +69,7 @@ function parseCotizacionString() {
         let servicioInteres = null;
         emailData.forEach(emailRow => {
           if (emailRow.includes(clienteNit)) {
-            console.log(emailRow)
+            logger.log('emailRow'+emailRow)
             email = emailRow[1]; // Asumiendo que el email está en la columna B (índice 1)
             nombreContacto = emailRow[6]; // Asumiendo que el nombre de contacto está en la columna D (índice 3)
             servicioInteres = emailRow[14]; // Asumiendo que el servicio de interés está en la columna F (índice 5)
