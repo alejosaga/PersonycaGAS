@@ -65,7 +65,8 @@ function parseCotizacionString() {
   
         // Buscar el email, nombre de contacto y servicio de interés correspondiente usando el mismo índice
         const clienteNit = cotizacionValue.split(' NIT ')[1];
-        Logger.log('nit'+clienteNit)
+        Logger.log('cotizacion data '+cotizacionValue)
+        Logger.log('maestro data '+emailData)
         let email = null;
         let nombreContacto = null;
         let servicioInteres = null;
