@@ -46,7 +46,7 @@ function parseCotizacionString() {
     const aprobacionCotDataRange = aprobacionCotSheet.getDataRange();
     const aprobacionCotData = aprobacionCotDataRange.getValues();
     
-    Logger.log('Data'+data)
+    
     cotizaciones.forEach(cotizacion => {
       const cotizacionValue = cotizacion['Cotización'];
       let resultado = null;
@@ -65,6 +65,7 @@ function parseCotizacionString() {
   
         // Buscar el email, nombre de contacto y servicio de interés correspondiente usando el mismo índice
         const clienteNit = cotizacionValue.split(' NIT ')[1];
+        Logger.log('nit'+clienteNit)
         let email = null;
         let nombreContacto = null;
         let servicioInteres = null;
@@ -95,7 +96,7 @@ function parseCotizacionString() {
             to: email,
             cc: personycaEmail1,
             subject: `Seguimiento cotizacion ${servicioInteres} Personyca`,
-            body: `Estimado ${nombreContacto},\n\nLe escribimos para retomar el proceso de cotizacion ${cotizacionValue} de ${servicioInteres}.\n\nPor favor haganos saber si pudo revisar la propuesta, si tiene alguna duda o de que manera podemos llegar a un acuerdo. Adjunto encontrará el documento con la oferta economica del servicio. En caso de estar de acuerdo con la cotización agradecemos pueda completar el formulario en el siguiente enlace: ${formLink}.\n\nAgradecemos su atención y recuerde que quedamos atentos ante cualquier consulta que pueda surgir al respecto.\n\nSaludos cordiales,\nPersonyca`,
+            body: `Estimado ${nombreContacto},\n\nLe escribimos para retomar el proceso de cotizacion ${cotizacionValue} de ${servicioInteres}.\n\nPor favor haganos saber si pudo revisar la propuesta, si tiene alguna duda o de que manera podemos llegar a un acuerdo.  Adjunto encontrará el documento con la oferta economica del servicio. En caso de estar de acuerdo con la cotización agradecemos pueda completar el formulario en el siguiente enlace: ${formLink}.\n\nAgradecemos su atención y recuerde que quedamos atentos ante cualquier consulta que pueda surgir al respecto.\n\nSaludos cordiales,\nPersonyca`,
             attachments: [file.getAs(MimeType.PDF)]
           });
           Logger.log(`Correo enviado a ${email} con archivo adjunto para ${cotizacionValue}`);
