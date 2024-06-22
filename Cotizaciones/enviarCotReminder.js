@@ -70,8 +70,8 @@ function parseCotizacionString() {
         emailData.forEach(emailRow => {
           if (emailRow.includes(clienteNit)) {
             email = emailRow[1]; // Asumiendo que el email está en la columna B (índice 1)
-            nombreContacto = emailRow[3]; // Asumiendo que el nombre de contacto está en la columna D (índice 3)
-            servicioInteres = emailRow[5]; // Asumiendo que el servicio de interés está en la columna F (índice 5)
+            nombreContacto = emailRow[6]; // Asumiendo que el nombre de contacto está en la columna D (índice 3)
+            servicioInteres = emailRow[14]; // Asumiendo que el servicio de interés está en la columna F (índice 5)
           }
         });
   
@@ -93,7 +93,7 @@ function parseCotizacionString() {
           MailApp.sendEmail({
             to: email,
             subject: `Seguimiento cotizacion ${servicioInteres} Personyca`,
-            body: `Estimado ${nombreContacto},\n\nLe escribimos para hacer seguimiento a la cotización ${cotizacionValue} de ${servicioInteres}.\n\nAdjunto encontrará el documento con la información detallada. También puede completar el formulario prellenado en el siguiente enlace: ${formLink}.\n\nAgradecemos su atención y quedamos atentos a cualquier consulta.\n\nSaludos cordiales,\nPersonyca`,
+            body: `Estimado ${nombreContacto},\n\nLe escribimos para retomar el proceso de cotizacion ${cotizacionValue} de ${servicioInteres}.\n\n que iniciamos dias atras, sabemos las muchas ocupaciones que puede tener, pero estamos para ayudarlo, Adjunto encontrará el documento con la oferta economica del servicio. En caso de estar de acuerdo con la cotización agradecemos pueda completar el formulario en el siguiente enlace: ${formLink}.\n\nAgradecemos su atención y recuerde que quedamos atentos ante cualquier consulta que pueda surgir al respecto.\n\nSaludos cordiales,\nPersonyca`,
             attachments: [file.getAs(MimeType.PDF)]
           });
           Logger.log(`Correo enviado a ${email} con archivo adjunto para ${cotizacionValue}`);
