@@ -30,7 +30,7 @@ function parseCotizacionString() {
     const cotizaciones = parseCotizacionString();
   
     const otroSheet = SpreadsheetApp.openById(batPsiServiceId).getSheetByName('Aplicacion Bateria riesgo psico');
-    const emailSheet = SpreadsheetApp.openById(emailSheetId).getSheetByName('Datos'); // Asegúrate de que el nombre de la hoja es correcto
+    const emailSheet = SpreadsheetApp.openById(maestroCotId).getSheetByName('Datos'); // Asegúrate de que el nombre de la hoja es correcto
     const aprobacionCotSheet = SpreadsheetApp.openById(cotApproveId).getSheetByName('Aprobaciones'); // Asegúrate de que el nombre de la hoja es correcto
   
     if (!otroSheet || !emailSheet || !aprobacionCotSheet) {
@@ -59,7 +59,7 @@ function parseCotizacionString() {
   
       if (resultado) {
         // Extraer la URL del archivo PDF de la última columna
-        const fileUrl = resultado[resultado.length - 1]; // Última columna
+        let fileUrl = resultado[resultado.length - 1]; // Última columna
         Logger.log(`URL del archivo PDF para ${cotizacionValue}: ${fileUrl}`);
   
         // Buscar el email, nombre de contacto y servicio de interés correspondiente usando el mismo índice
