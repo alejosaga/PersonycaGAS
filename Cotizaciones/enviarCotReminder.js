@@ -47,7 +47,7 @@ function parseCotizacionString() {
       const aprobacionCotData = aprobacionCotDataRange.getValues();
     
       cotizaciones.forEach(cotizacion => {
-        const cotizacionValue = cotizacion['Cotización'];
+        let cotizacionValue = cotizacion['Cotización'];
         let resultado = null;
     
         // Buscar el valor de la cotización en la columna correspondiente
