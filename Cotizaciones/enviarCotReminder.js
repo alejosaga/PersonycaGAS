@@ -41,7 +41,7 @@ function parseCotizacionString() {
       // Obtener todos los datos del sheet de formularios y del sheet de emails
       const dataRange = otroSheet.getDataRange();
       const data = dataRange.getValues();
-      const emailDataRange = emailDataRange = emailSheet.getDataRange();
+      const emailDataRange = emailSheet.getDataRange();
       const emailData = emailDataRange.getValues();
       const aprobacionCotDataRange = aprobacionCotSheet.getDataRange();
       const aprobacionCotData = aprobacionCotDataRange.getValues();
