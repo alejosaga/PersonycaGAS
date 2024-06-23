@@ -59,7 +59,7 @@ function parseCotizacionString() {
     
         if (resultado) {
           // Extraer la URL del archivo PDF de la última columna
-          const fileUrl = resultado[resultado.length - 1]; // Última columna
+          let fileUrl = resultado[resultado.length - 1]; // Última columna
           Logger.log(`URL del archivo PDF para ${cotizacionValue}: ${fileUrl}`);
     
           // Buscar el email, nombre de contacto y servicio de interés correspondiente usando la cotización
@@ -69,8 +69,8 @@ function parseCotizacionString() {
           emailData.forEach(emailRow => {
             if (emailRow.includes(cotizacionValue)) {
               email = emailRow[1]; // Asumiendo que el email está en la columna B (índice 1)
-              nombreContacto = emailRow[3]; // Asumiendo que el nombre de contacto está en la columna D (índice 3)
-              servicioInteres = emailRow[5]; // Asumiendo que el servicio de interés está en la columna F (índice 5)
+              nombreContacto = emailRow[6]; // Asumiendo que el nombre de contacto está en la columna D (índice 3)
+              servicioInteres = emailRow[14]; // Asumiendo que el servicio de interés está en la columna F (índice 5)
             }
           });
     
