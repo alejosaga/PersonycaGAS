@@ -51,7 +51,7 @@ async function activarCliente() {
       let body = dataToSend;
       MailApp.sendEmail({
           to: clientEmail_1,
-          cc: clientEmail_2,
+          cc: clientEmail_2,personycaEmail1,personycaEmail2,
           subject: subject,
           htmlBody: body,
           attachments: [archivoAdjunto.getAs(MimeType.PDF)]

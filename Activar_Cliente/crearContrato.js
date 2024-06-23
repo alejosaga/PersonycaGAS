@@ -168,7 +168,7 @@ function crearContrato() {
     let emailBody = '<p>Hola <strong>'+ firstName +'</strong>, Tenemos un nuevo cliente!! La empresa <strong>'+razonSocial+'</strong> ha decidido aceptar la cotizacion '+cot+'.</p> <p>A el borrador de contrato y la documentacion adjunta por el cliente para revision se encuentra en la siguiente carpeta'+contractFolderUrl+' y el link correspondiente al formulario de aprobacion.'+form+'<p>Una vez envies el formulario aceptando el contrato, este será enviado al cliente en PDF 2. </p>'
     MailApp.sendEmail({
         to: personycaEmail1,
-        cc: personycaEmail2,
+        cc: personycaEmail2,personycaEmail3,
         subject: subject,
         htmlBody: emailBody
         
