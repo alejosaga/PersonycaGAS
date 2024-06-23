@@ -96,7 +96,7 @@ function prefillForm() {
     }
     
     function sendWeeklyReminder() {
-      const emailRecipient = 'autopersonyca@gmail.com';
+      
       const { formUrl, cotizacionesInfo } = prefillForm(); // Obtener la URL pública del formulario y la información de las cotizaciones
       
       if (!formUrl || cotizacionesInfo.length === 0) {
@@ -113,7 +113,8 @@ function prefillForm() {
       emailBody += `Puedes seleccionar las cotizaciones para reenviar el recordatorio en el siguiente enlace: ${formUrl}`;
       
       MailApp.sendEmail({
-        to: emailRecipient,
+        to: personycaEmail1,
+        cc: personycaEmail2,personycaEmail3,
         subject: 'Recordatorio semanal de cotizaciones',
         body: emailBody,
       });
