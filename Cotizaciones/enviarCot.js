@@ -105,7 +105,7 @@ function traerDatos() {
       let body = '<p>Ref: ' + slideName + '</p><p>Buen día Sr(a) <strong>' + firstWord + '</strong>,</p><p> Deseamos éxitos en sus actividades.</p><p>Gracias por elegirnos en conocer nuestros servicios para cubrir las necesidades de su empresa <strong>' + razonSocial + '</strong> en temas de <strong>' + servicio + '<strong>.</p> <p>como aliado estratégico de su organización en el servicio de consultoría en el diseño e implementación de sistemas de gestion. Contamos con licencia jurídica 2243 emitida por la secretaria de salud de Bogotá.</p><p>A continuación, encontrará nuestra oferta de servicios, esperamos que la misma satisfaga su propósito, no obstante estaremos atentos de suplir sus necesidades.</p><p>De nuevo le agradecemos su confianza en el equipo de PERSONYCA S.A.S.</p><p>A con Agradecemos su atención y solcitamos su colaboracion llenando el siguiente formulario indicandonos si acepta la cotizacion y proporcionando los datos necesarios para la elaboracion del contrato. ' + prefilledForm + ' </p><p>Cordialmente,</p></p><p>Equipo Personyca,</p>';
       MailApp.sendEmail({
         to: clientEmail1,
-        cc: personycaEmail1,
+        cc: personycaEmail1, personycaEmail2,personycaEmail3,
         subject: subject,
         attachments: [attach],
         htmlBody: body
