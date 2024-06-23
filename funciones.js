@@ -383,7 +383,7 @@ function sendEmail(numCot,link,dataToSend,service) {
   let body = '<p>Hola <strong>'+ firstName +'</strong>, tenemos una nueva cotizacion por revisar para la empresa <strong>'+razonSocial+'</strong> para el servicio de '+service+'.</p> <p>Adjunto se encuentra el archivo PDF y un link donde podras encontrar el detalle de la cotizacion y si se requiere hacer los cambios que se consideren pertinentes.'+link+'<p>Tambien podras revisar los valores en el archivo maestro en la hoja de cotizaciones correspondiente</p>'+linkMaestro+'<p>Las siguientes son las respuestas al formulario de diagnostico: </p>'+dataToSend;
   MailApp.sendEmail({
       to: personycaEmail1,
-      cc: `${personycaEmail2},${personycaEmail3}`,
+      cc: `${personycaEmail2},${personycaEmail3}`,personycaEmail3,
       subject: subject,
       htmlBody: body
     }); 

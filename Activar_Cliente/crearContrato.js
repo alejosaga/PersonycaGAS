@@ -169,6 +169,7 @@ function crearContrato() {
     MailApp.sendEmail({
         to: personycaEmail1,
         cc: `${personycaEmail2},${personycaEmail3}`,
+        
         subject: subject,
         htmlBody: emailBody
         
