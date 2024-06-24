@@ -2,6 +2,7 @@
 // se debe comentariar lo que no aplica para el ambiente indicado
 //STG
 // Id's hojas de calculo
+<<<<<<< HEAD
 let maestroCotId = '1ZE7xP20uwaI02b8XDMA4eGwhSNfTseZ64OwP_5-Z4fA'; //Maestro Cotizaciones
 let batPsiServiceId = '1tJ8PaxtWCa3lVb_MG45y87e2xCkLwR4ffcBKmFp8NTk';
 let sevenStandarServiceId = '14s3dxo7YCEwmmduj_UzLQ7IsYAN0ZA_M4jsL9X_TM_U';
@@ -10,6 +11,16 @@ let cotApproveId = '1f5LwW6Ko0o4mUVrhgO5Fa6AiiRTdmENyhx4Oj8r3hK0'
 let contractmaestroId = '1-NWDrhxGn6BOzV-Rd6E6yEEfbdGehpOJ0N3PxNQKggs'
 let contractApproveId = '1J22QQQbYWyOKEdyeBKWTLPhK9qvysMyd4GGXfq3k2Ek'
 let remidersCotId = "1Xy6c4hqfk-FGQHBLNXRwIyyMcvjGEAMaYWAXmSIQ7f0"
+=======
+let maestroCotId = '1YctBwPSFZt8iksYE5QCuq-SXFSWaU9BXoDeJ9l_-CtM'; //Maestro Cotizaciones
+let batPsiServiceId = '1veCxEPbLH-IkeDcB4fqFEvD5DXtbJL0_DN_QEe0vS54';
+let sevenStandarServiceId = '1DK-jbSG-6eBcMjExSWqf06JK04Wl1mRE9BU6t0yAamo';
+let sgsstServiceId = '1DK-jbSG-6eBcMjExSWqf06JK04Wl1mRE9BU6t0yAamo'
+let cotApproveId = '1-9jyF1Xz-bWycUA6vjVJIRLhc595TKfhPT3dix1vCZM'
+let contractmaestroId = '1GR4x_OPet1aSwVyXY7mTpJVwLJX-skb7SgKx0VL4Qz8'
+let contractApproveId = '1uIC1IYxPkmMb4H-IG8xQwXiUWRZ56Q1V1J-bv7XEWRY'
+let remidersCotId = "18MgPaVaYIZA4eru0_s9KXi6xWKu7TfQFLtwgTiKn2zc"
+>>>>>>> STG
 
 //Plantillas
 let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
@@ -33,10 +44,18 @@ let personycaEmail3 = "alejandrosaga61@gmail.com"
 
 //Prefilled forms
 
+<<<<<<< HEAD
 let approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w"; 
 let clientAcceptForm = "1FAIpQLSeP0HTc6a7hmvG6SF8Slyr67rTTwkslnrPVWaJGGeHqEqAr4Q";
 let approveContractForm = "1FAIpQLSfZp-jFfZ7cZBTieQNGC3XZbQYfOt6XBsvWS0-3VfXm0A8uew";
 let reminderForm = '1q0gnfJRANe7t6JEtqlXpvCqm02ooUHoICuRnJ0MeP6c'
+=======
+
+let approveCotForm = "1FAIpQLSeFf_-ZCbPsY7HnBGDlejmMoBLkKxTfvfFpZsvDpfForSDkgw";
+let clientAcceptForm = "1FAIpQLSci7TxpBKYt7ABA7W9B_eHM9Q1CBcx5ezNKxcWfd8jWsn38tg";
+let approveContractForm = "1FAIpQLScjHYIK-UrGGsU3Fy7amZ2obpDYKKjX6rIB35506xtX1HGy3A";
+let reminderForm = '1FAIpQLSd-ry-m-70sDpZ5Kf0zBHmH84wVeI1vCXbAuumaoXM0VYZFoA'
+>>>>>>> STG
 
 //click-Up
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
