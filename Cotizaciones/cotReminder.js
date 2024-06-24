@@ -114,7 +114,7 @@ function prefillForm() {
       
       MailApp.sendEmail({
         to: personycaEmail1,
-        cc: personycaEmail2,personycaEmail3,
+        cc: `${personycaEmail2},${personycaEmail3}`,
         subject: 'Recordatorio semanal de cotizaciones',
         body: emailBody,
       });
