@@ -2,6 +2,7 @@
 // se debe comentariar lo que no aplica para el ambiente indicado
 //STG
 // Id's hojas de calculo
+/*
 let maestroCotId = '1ZE7xP20uwaI02b8XDMA4eGwhSNfTseZ64OwP_5-Z4fA'; //Maestro Cotizaciones
 let batPsiServiceId = '1tJ8PaxtWCa3lVb_MG45y87e2xCkLwR4ffcBKmFp8NTk';
 let sevenStandarServiceId = '14s3dxo7YCEwmmduj_UzLQ7IsYAN0ZA_M4jsL9X_TM_U';
@@ -41,7 +42,7 @@ let reminderForm = '1q0gnfJRANe7t6JEtqlXpvCqm02ooUHoICuRnJ0MeP6c'
 //click-Up
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
 let TEAM_ID = '9017178102'; // Reemplaza con el ID de tu equipo en ClickUp
-/*
+*/
 //DEV
 // Id's hojas de calculo
 let maestroCotId = '1ONjXHvsob4GxwJ5we8CCkOUd-3UhHpEqr6ZO4jMDROs'; // Maestro Cotizaciones
@@ -65,15 +66,6 @@ let slideIteg1 = "";
 let slideInteg2 = "1IkI92-ESQq4lw79zIzbUOT3qeHAFwBKeW7gLlKCh62g";
 let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag";
 let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4";
-let slideSgsstId = "1QsXMBN4IznmhdsEO_iL1cajdmj3J5dWFF3Lm5KUXrpQ"
-let slideISO9001 = "1jmasAllTh8Lu63Yc4B0GaiEHkazxhOI6i07nOJXxA9U"
-let slideISO13485 = ""
-let slideISO45001 = ""
-let slideISO14001 = ""
-let slideIteg1 = ""
-let slideInteg2 = ""
-let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag"
-let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4"
 let contratoPSI = "1w8YIKpGm2TDWN0G2S4OH7DJ9F9uJMkAUxypw0ee1TsM";
 let tasksSgsst = "1_SrR_bdZJ_6cs7Wc4plClaXr4trbaupXSbtNdPvGmY0";
 let tasks7Standares ="1s-tgpGwICepg9ymioueu4hk7O3mcUjU_XxotHmzT5bc";
@@ -98,6 +90,7 @@ let reminderForm = ''
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
 let TEAM_ID = '9013309604'; // Reemplaza con el ID de tu equipo en ClickUp
 let clickClientSpaceId = '90131279877'
+
 /*
 //Prod
 // Id's hojas de calculo
