@@ -2,14 +2,14 @@
 // se debe comentariar lo que no aplica para el ambiente indicado
 //STG
 // Id's hojas de calculo
-let maestroCotId = '1ZE7xP20uwaI02b8XDMA4eGwhSNfTseZ64OwP_5-Z4fA'; //Maestro Cotizaciones
-let batPsiServiceId = '1tJ8PaxtWCa3lVb_MG45y87e2xCkLwR4ffcBKmFp8NTk';
-let sevenStandarServiceId = '14s3dxo7YCEwmmduj_UzLQ7IsYAN0ZA_M4jsL9X_TM_U';
-let sgsstServiceId = '14s3dxo7YCEwmmduj_UzLQ7IsYAN0ZA_M4jsL9X_TM_U'
-let cotApproveId = '1f5LwW6Ko0o4mUVrhgO5Fa6AiiRTdmENyhx4Oj8r3hK0'
-let contractmaestroId = '1-NWDrhxGn6BOzV-Rd6E6yEEfbdGehpOJ0N3PxNQKggs'
-let contractApproveId = '1J22QQQbYWyOKEdyeBKWTLPhK9qvysMyd4GGXfq3k2Ek'
-let remidersCotId = "1Xy6c4hqfk-FGQHBLNXRwIyyMcvjGEAMaYWAXmSIQ7f0"
+let maestroCotId = '1YctBwPSFZt8iksYE5QCuq-SXFSWaU9BXoDeJ9l_-CtM'; //Maestro Cotizaciones
+let batPsiServiceId = '1veCxEPbLH-IkeDcB4fqFEvD5DXtbJL0_DN_QEe0vS54';
+let sevenStandarServiceId = '1DK-jbSG-6eBcMjExSWqf06JK04Wl1mRE9BU6t0yAamo';
+let sgsstServiceId = '1DK-jbSG-6eBcMjExSWqf06JK04Wl1mRE9BU6t0yAamo'
+let cotApproveId = '1-9jyF1Xz-bWycUA6vjVJIRLhc595TKfhPT3dix1vCZM'
+let contractmaestroId = '1GR4x_OPet1aSwVyXY7mTpJVwLJX-skb7SgKx0VL4Qz8'
+let contractApproveId = '1uIC1IYxPkmMb4H-IG8xQwXiUWRZ56Q1V1J-bv7XEWRY'
+let remidersCotId = "18MgPaVaYIZA4eru0_s9KXi6xWKu7TfQFLtwgTiKn2zc"
 
 //Plantillas
 let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
