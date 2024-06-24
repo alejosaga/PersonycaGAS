@@ -34,10 +34,11 @@ let personycaEmail3 = "alejandrosaga61@gmail.com"
 
 //Prefilled forms
 
-let approveCotForm = "1FAIpQLScHpJV_q14ulS0vsuw9RYYjbG9vmr7ZUhpoZK81bwSib3Cq4w"; 
-let clientAcceptForm = "1FAIpQLSeP0HTc6a7hmvG6SF8Slyr67rTTwkslnrPVWaJGGeHqEqAr4Q";
-let approveContractForm = "1FAIpQLSfZp-jFfZ7cZBTieQNGC3XZbQYfOt6XBsvWS0-3VfXm0A8uew";
-let reminderForm = '1q0gnfJRANe7t6JEtqlXpvCqm02ooUHoICuRnJ0MeP6c'
+
+let approveCotForm = "1FAIpQLSeFf_-ZCbPsY7HnBGDlejmMoBLkKxTfvfFpZsvDpfForSDkgw";
+let clientAcceptForm = "1FAIpQLSci7TxpBKYt7ABA7W9B_eHM9Q1CBcx5ezNKxcWfd8jWsn38tg";
+let approveContractForm = "1FAIpQLScjHYIK-UrGGsU3Fy7amZ2obpDYKKjX6rIB35506xtX1HGy3A";
+let reminderForm = '1FAIpQLSd-ry-m-70sDpZ5Kf0zBHmH84wVeI1vCXbAuumaoXM0VYZFoA'
 
 //click-Up
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
