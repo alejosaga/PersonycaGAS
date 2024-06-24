@@ -91,7 +91,7 @@ function parseCotizacionString() {
             // Enviar el correo electrónico con el archivo adjunto
             MailApp.sendEmail({
               to: email,
-              cc:personycaEmail1,personycaEmail2,personycaEmail3,
+              cc:`${personycaEmail1},${personycaEmail2},${personycaEmail3}`,
               subject: `Seguimiento cotizacion ${servicioInteres} Personyca`,
               body: `Estimado(a) ${nombreContacto},\n\nEspero que se encuentre bien. Le escribimos para hacerle un seguimiento a la cotización ${cotizacionValue} de ${servicioInteres} que le enviamos recientemente.\n\nAdjunto encontrará el documento con todos los detalles que necesita. También hemos preparado un formulario que puede completar en el siguiente enlace: ${formLink}.\n\nEstamos a su disposición para cualquier duda o consulta que pueda tener. Nos encantaría poder ayudarle en todo lo que necesite y esperamos tener la oportunidad de trabajar con usted.\n\nAgradecemos su atención y quedamos atentos a su respuesta.\n\nSaludos cordiales,\nEl equipo de Personyca`,
               attachments: [file.getAs(MimeType.PDF)]
