@@ -53,7 +53,7 @@ let sgsstServiceId = '1CkG2KZlhcRSdmEHhQkZ35tj_SKsVwsnL5nAmGmHKz28';
 let cotApproveId = '1r_nqfSmaCWNtPm3h_Tw9ZtXCXWsFos1Tj_wqx44jAaU';
 let contractmaestroId = '1lJkAZkWm_8xLGO7VYngLHqAast85LAcxqgOf6U0Z5JU';
 let contractApproveId = '1PtEMS56XEFPGTiFHlh7xgJq_K1L8I4Rsgtax9G6rwwU';
-let isoSisGesCotId = 'hDEQLOiKC7GyU1WLtBiV44qfoj1yWxZENgVNET1CF4I'
+let isoSisGesCotId = '1hDEQLOiKC7GyU1WLtBiV44qfoj1yWxZENgVNET1CF4I'
 
 //Plantillas
 let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
@@ -61,11 +61,11 @@ let slideSevenStanId = "1Hx5R0CPuA85A8ThQJijn8-j9oc2qyB7OPFlsL9FT52s"
 
 let slideSgsstId = "1QsXMBN4IznmhdsEO_iL1cajdmj3J5dWFF3Lm5KUXrpQ"
 let slideISO9001 = "1jmasAllTh8Lu63Yc4B0GaiEHkazxhOI6i07nOJXxA9U"
-let slideISO13485 = ""
+let slideISO13485 = "1eAYcbFMyE4N7Ohi39r_GbQ2BKqR2ZICOEs-RmGXwkwE"
 let slideISO45001 = ""
 let slideISO14001 = ""
 let slideIteg1 = ""
-let slideInteg2 = ""
+let slideInteg2 = "1IkI92-ESQq4lw79zIzbUOT3qeHAFwBKeW7gLlKCh62g"
 let contrato7estandares = "1Vh08aAOlnOC8CAi5IIFk0mLa-W62ISHNw9F8_1WAJag"
 let contratoSgsst = "1eK31KnMMn1pT3BmBIeHsmAWwVfamDnqSetH_FY-4TH4"
 
@@ -93,9 +93,8 @@ let reminderForm = ''
 
 //click-Up
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
-
 let TEAM_ID = '9017178102'; // Reemplaza con el ID de tu equipo en ClickUp
-
+let clickClientSpaceId = '90131279877'
 
 
 
