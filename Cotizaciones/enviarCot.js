@@ -93,6 +93,7 @@ function traerDatos() {
     let companyName = razonSocial.replace(/ /g, '+');
   
     let prefilledForm = "https://docs.google.com/forms/d/e/" + clientAcceptForm + "/viewform?usp=pp_url&entry.1204079246=" + nit + "&entry.219423794=" + cot + "&entry.1368409936=" + companyName + "&entry.1361289729=" + valor + "&entry.237567784=Si&entry.483030226=" + fechaFormateada;
+    sheetApprove.getRange(approvelastRow, 9).setValue(prefilledForm);
   
       
     let pdfBlob = DriveApp.getFileById(slideId).getAs(MimeType.PDF);
