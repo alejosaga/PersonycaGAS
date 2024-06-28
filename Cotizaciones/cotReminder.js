@@ -112,12 +112,12 @@ function prefillForm() {
       });
       emailBody += `Puedes seleccionar las cotizaciones para reenviar el recordatorio en el siguiente enlace: ${formUrl}`;
       
-      MailApp.sendEmail({
+     /* MailApp.sendEmail({
         to: personycaEmail1,
         cc: `${personycaEmail2},${personycaEmail3}`,
         subject: 'Recordatorio semanal de cotizaciones',
         body: emailBody,
-      });
+      })*/;
     }
     
     function setupTrigger() {

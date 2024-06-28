@@ -54,6 +54,7 @@ let cotApproveId = '1r_nqfSmaCWNtPm3h_Tw9ZtXCXWsFos1Tj_wqx44jAaU';
 let contractmaestroId = '1lJkAZkWm_8xLGO7VYngLHqAast85LAcxqgOf6U0Z5JU';
 let contractApproveId = '1PtEMS56XEFPGTiFHlh7xgJq_K1L8I4Rsgtax9G6rwwU';
 let isoSisGesCotId = '1hDEQLOiKC7GyU1WLtBiV44qfoj1yWxZENgVNET1CF4I'
+let remidersCotId = "1M1qFE5w5ZYGFq6y0c18ZW27t-v4HkPmxHpqKP9LVq-U";
 
 //Plantillas
 let slideBatPsiId = "1LneOkKixIm1zOFnLpkjROqzcZ3O9ItMOs_a2EBGzShk";
@@ -89,7 +90,7 @@ let personycaEmail3 = "alejandrosaga61@gmail.com"
 let approveCotForm = "1FAIpQLSf_ZTWb79JDUbWMtXng8Lnog0Jwod7oxAP2U4nNSIfEQwSs6g";
 let clientAcceptForm = "1FAIpQLSebS5fS5oB9tXnns6OdM6r8RnkC9PzYiU-CoptypDl-mhldPg";
 let approveContractForm = "1FAIpQLScnKWRXGB7XND1zK7msYKoLYEqP1eL-LK7zKEjjW9IFnbMw7A";
-let reminderForm = ''
+let reminderForm = "1FAIpQLSecL6gS6mf-faNXLGpfVPxOQ_cG8moReXyAiFkYLYqSHddEcA";
 
 //click-Up
 let API_TOKEN = 'pk_72795913_ZB3OQD9YF8WSXP83IM288GNHNCMJLP3Z'; // Reemplaza con tu token de ClickUp
